@@ -23,4 +23,6 @@ export default defineConfig({
   },
 
   integrations: [react()],
+  outDir: 'static', // remplace par ton chemin souhaité
+  base: '/jordan_portfolio/', // remplace par le nom de ton dossier
 });
