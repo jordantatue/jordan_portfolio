@@ -2,7 +2,7 @@
 
 A sleek, responsive portfolio website built with **Astro**, **React**, and **Tailwind CSS**, featuring modern animations and stunning glassmorphism effects.
 
-![Portfolio Screenshot](https://github.com/jordantatue/jordan_portfolio/assets/image_site.png)
+![Portfolio Screenshot](https://github.com/jordantatue/jordan_portfolio/raw/master/assets/image_site.png)
 
 ## ✨ Features
 
