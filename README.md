@@ -2,7 +2,7 @@
 
 A sleek, responsive portfolio website built with **Astro**, **React**, and **Tailwind CSS**, featuring modern animations and stunning glassmorphism effects.
 
-![Portfolio Screenshot](https://github.com/user-attachments/assets/4f2466f1-1ebe-4cbe-857c-40eccd63c384)
+![Portfolio Screenshot](https://github.com/jordantatue/jordan_portfolio/assets/image_site.png)
 
 ## ✨ Features
 
@@ -28,7 +28,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/my-portfolio.git
+git clone https://github.com/jordantatue/jordan_portfolio.git
 cd my-portfolio
 
 # Install dependencies
@@ -165,7 +165,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## ©️ Copyright
 
-© 2025 **Rishikesh S.** All rights reserved.
+© 2025 **Jordan T.** All rights reserved.
 
 You’re welcome to use this template for your own portfolio — just update `data.ts` and tweak the design as needed. Please keep attribution to the original author.
 
