@@ -9,56 +9,49 @@ export const personalInfo = {
 
 export const workExperience = [
   {
-    company: "SG ASSU (Société Générale Assurances)",
+    company: "Société Générale (ASSU)",
     location: "Orléans / Remote",
     position: "Alternant Développeur Full Stack",
-    period: "Septembre 2023 - Septembre 2025",
+    period: "Septembre 2023 – Septembre 2025",
     achievements: [
-      "Développement et maintenance d'applications métiers critiques pour les infrastructures internes, en Java (Grails/Groovy), Python (Django), PHP (Symfony), avec des interfaces utilisateurs en JavaScript, HTML5 et Bootstrap.",
-      "Conception de scripts d'automatisation avec Python et Ansible pour industrialiser les tâches récurrentes (migrations de données, mises à jour, installations de packages), réduire les interventions manuelles et fiabiliser les déploiements.",
-      "Participation active à l'intégration continue via GitLab CI/CD, avec gestion des versions, revues de code, tests Pytest et livrables validés à chaque sprint.",
-      "Gestion de la résilience applicative et des mises en production : supervision des performances, suivi de la disponibilité, gestion des logs, plan de retour arrière (rollback).",
-      "Sécurisation des environnements Linux (CentOS/RedHat) : identification et correction de vulnérabilités, durcissement système, conformité réglementaire et suivi des alertes de sécurité.",
-      "Travail collaboratif au sein d’une équipe agile SCRUM, avec suivi JIRA, participation aux daily meetings, revues techniques et rétrospectives.",
+      "J’ai participé au développement et à l’amélioration de plateformes stratégiques du groupe, en utilisant Python, PHP, Java et JavaScript pour répondre à des besoins métiers complexes.",
+      "J’ai participé à la conception du module de planning collaborateur : affichage du taux de présence, automatisation des extractions, interface intuitive — avec Django / Python.",
+      "J’ai participé à la création du module de réservation de parking : carte interactive, calcul dynamique des disponibilités selon les présences, et automatisation des extractions — en Django / Python.",
+      "J’ai participé à la centralisation des jobs Control-M via une interface web intégrée, combinant Django / Python et DataTables.js pour un affichage interactif et une supervision simplifiée.",
+      "J’ai participé à la gestion des incidents & changements : récupération automatisée de tickets via API UNITY, génération de rapports envoyés pour réunions CRB — mise en œuvre en PHP / Symfony.",
+      "J’ai participé à la transformation des infrastructures : migration de CentOS vers Red Hat Enterprise Linux et transition des environnements Cloud Gen1 vers Gen2, avec refonte des processus d’automatisation basés sur des pipelines CI/CD (GitLab CI, Jenkins, Docker).",
+      "J’ai participé à la migration des applications vers des instances OCS, garantissant une transition technique fluide, une compatibilité stricte et une scalabilité adaptée.",
+      "J’ai participé à l’automatisation des déploiements et migrations via scripts Python et playbooks Ansible, réduisant les interventions manuelles et améliorant la fiabilité des livraisons.",
+      "J’ai participé à l’analyse, à la correction et au durcissement de systèmes Linux (CentOS / Red Hat), renforçant la sécurité et la robustesse des environnements critiques.",
+      "J’ai participé à la transition vers une équipe en Roumanie : passation de connaissances en anglais, rédaction de documentation exhaustive et accompagnement des collaborateurs distants."
     ],
   },
   {
-    company: "Hackathon Data Science – EnergyCity",
-    location: "Hannovre, Allemagne",
-    position: "Participant – Data Scientist",
+    company: "Enercity – Hackathon Data Science",
+    location: "Hanovre, Allemagne",
+    position: "Participant / Data Scientist",
     period: "Novembre 2024",
     achievements: [
-      "Projet de prévision de consommation énergétique à partir de données démographiques et historiques, avec nettoyage, traitement des valeurs manquantes, détection des outliers, et étude des corrélations via matrices de Pearson.",
-      "Modélisation statistique par régression linéaire multiple, avec évaluation par RMSE et MAE.",
-      "Optimisation de la précision des prédictions par techniques de machine learning supervisé, en particulier XGBoost.",
-      "Utilisation de bibliothèques Python telles que pandas, numpy, matplotlib, seaborn, scikit-learn et XGBoost dans des notebooks Jupyter pour un suivi reproductible des analyses.",
-      "Production de visualisations interactives pour la restitution au jury et remise d’un rapport technique complet du projet.",
-    ],
-  },
-  {
-    company: "Camtel",
-    location: "Douala, Cameroun",
-    position: "Stagiaire Data Analyst",
-    period: "Juin 2022 - Septembre 2022",
-    achievements: [
-      "Extraction, transformation et nettoyage de données depuis des bases internes à l’aide de Python (pandas, psycopg2) et PostgreSQL, dans le but de créer des datasets cohérents et exploitables pour les équipes métiers.",
-      "Développement de scripts Python pour automatiser les tâches d’analyse répétitives, avec génération de rapports périodiques.",
-      "Intégration de systèmes dynamiques de visualisation des données via DataTables (JavaScript), interfacés en HTML/Python, pour faciliter l’accès aux données des équipes marketing et techniques.",
-      "Réalisation d'analyses statistiques descriptives sur les segments clients et la performance du réseau (trafic, bande passante) avec visualisation via Matplotlib et Seaborn.",
+      "J’ai participé à un projet de prédiction énergétique pour la ville de Hanovre, transformant des données historiques et démographiques en modèles exploitables.",
+      "J’ai participé à la préparation des données : nettoyage, normalisation, gestion des valeurs manquantes et outliers, et exploration des corrélations via matrices de Pearson.",
+      "J’ai participé à la modélisation : implémentation d’un modèle de régression multiple, évaluation via RMSE / MAE, et optimisation avec XGBoost pour maximiser la précision.",
+      "J’ai participé à la construction de notebooks Python (pandas, numpy, scikit-learn, XGBoost) pour assurer traçabilité, reproductibilité et documentation de l’analyse.",
+      "J’ai participé à la restitution du projet : création de visualisations interactives et présentation d’un rapport technique détaillé au jury avec recommandations."
     ],
   },
 ];
 
 export const education = [
   {
-    institution: "3IL Ingénieurs",
+    institution: "3iL Ingénieurs",
     location: "Limoges, France",
-    degree: "Diplôme d’ingénieur – Informatique et Intelligence Artificielle",
+    degree: "Diplôme d’ingénieur – Informatique & Intelligence Artificielle (accréditation CTI)",
     period: "2022 – 2025",
     achievements: [
-      "Formation accréditée CTI couvrant le développement logiciel (Java, Web, mobile), l’intelligence artificielle (machine learning, traitement de données) et la gestion de projets.",
-      "Travaux pratiques, projets tutorés et préparation à l’environnement industriel.",
-    ],
+      "J’ai participé à une formation exhaustive couvrant le développement logiciel, le machine learning, le traitement de données et la gestion de projets.",
+      "J’ai participé à des projets tutorés et immersifs afin d’appliquer les concepts académiques à des cas industriels concrets.",
+      "J'ai fais une mobilité internationale à la Hochschule Hanovre en Allemagne en 2024, renforçant mes compétences techniques et linguistiques.",
+    ]
   },
   {
     institution: "Institut Universitaire de la Côte (IUC)",
@@ -66,8 +59,8 @@ export const education = [
     degree: "Classes préparatoires MPSI",
     period: "2020 – 2022",
     achievements: [
-      "Formation intensive en mathématiques, physique et sciences de l’ingénieur.",
-      "Préparation aux concours d’écoles d’ingénieurs françaises.",
+      "J’ai participé à un cursus intensif en mathématiques, physique et sciences de l’ingénieur, fondement essentiel de ma rigueur technique.",
+      "J’ai participé à la préparation aux concours d’écoles d’ingénieurs françaises, renforçant mon esprit analytique et ma discipline."
     ],
   },
 ];
@@ -80,7 +73,8 @@ export const skills = {
     "JavaScript",
     "C",
     "C++",
-    "Shell",
+    "C#",
+    "Shell"
   ],
   frontendDevelopment: [
     "HTML5",
@@ -89,35 +83,38 @@ export const skills = {
     "JavaScript",
     "React",
     "Angular",
-    "Astro",
-    "vue.js",
+    "Vue.js",
+    "Astro"
   ],
   backendDevelopment: [
     "Django",
-    "Spring",
-    "Grails",
-    "Groovy",
+    "Flask",
+    "FastAPI",
     "Spring Boot",
+    "JEE",
+    "Grails / Groovy",
     "Symfony",
+    "Laravel",
     "Node.js",
+    "REST API",
   ],
   databaseAndStorage: [
     "PostgreSQL",
     "MySQL",
-    "NoSQL",
+    "Oracle",
     "MongoDB",
     "SQLite",
-    "oracle",
+    "NoSQL"
   ],
   cloudAndDevOps: [
-    "Linux (CentOS, RedHat)",
+    "Linux (RHEL / CentOS)",
     "Ansible",
-    "Shell Scripting",
-    "GitLab CI/CD",
     "Docker",
     "Kubernetes",
-    "AWS",
+    "GitLab CI",
     "Jenkins",
+    "AWS",
+    "Scripts Shell"
   ],
   toolsAndMethods: [
     "Git",
@@ -125,78 +122,73 @@ export const skills = {
     "GitLab",
     "JIRA",
     "UML",
+    "DDD",
     "MERISE",
-    "Jenkins",
-    "Pytest",
-    "JUnit",
     "SCRUM",
+    "Kanban",
     "SAFe",
+    "Pytest",
+    "JUnit"
   ],
 };
 
-
 export const certifications = [
-  {
-    name: "Certification Python Development",
-  },
-  {
-    name: "Certification Angular and NetJS Development",
-  },
-  {
-    name: "Certification Scrum Fundamentals",
-  },
+  { name: "Certification Python" },
+  { name: "Certification Angular & NestJS" },
+  { name: "Certification Scrum Fundamental" },
+  { name: "TOEIC" },
 ];
 
-export const languages = ["Français (professionnel)", "Anglais (professionnel)"];
+export const languages = [
+  "Français (professionnel)",
+  "Anglais (professionnel)"
+];
 
 export const strengths = [
-  "Autonome et rigoureux dans l’exécution des tâches",
-  "Esprit d’initiative et force de proposition",
-  "Agilité dans les environnements complexes",
-  "Leadership et aisance en travail d’équipe",
+  "Autonomie, rigueur et planification",
+  "Esprit d’initiative et adaptabilité",
+  "Capacité à collaborer dans des contextes techniques exigeants",
+  "Leadership, mentorat et montée en compétence collective"
 ];
-
 
 export const projects = [
   {
     title: "Snap-Faces",
-    github: "https://github.com/jordantatue/snapface", // Lien GitHub à ajouter si disponible
-    video: "https://youtube.com/embed/wMjSthcGC6M", // Lien vers la vidéo YouTube à ajouter si disponible
+    github: "https://github.com/jordantatue/snapface",
+    video: "https://youtube.com/embed/wMjSthcGC6M",
     description: [
-      "Application web développée avec Angular, permettant aux utilisateurs de partager des photos et d'interagir avec celles des autres.",
-      "Fonctionnalités principales : affichage dynamique des images, système de likes, et interface utilisateur réactive.",
-      "Utilisation des services Angular pour la gestion des données et des composants pour une architecture modulaire.",
+      "J’ai participé à la création d’une application web Angular de partage de photos avec système de likes et interface interactive.",
+      "J’ai participé à la définition d’une architecture modulaire et de services de gestion des données performants.",
+      "J’ai participé à la synchronisation entre front-end et back-end pour assurer cohérence et rapidité d’accès."
     ],
   },
   {
-    title: "Conception d'une solution informatique",
-    github: "https://github.com/jordantatue/Analyse_Projet_HappySport", // Lien GitHub à ajouter si disponible
-    video: "https://www.youtube.com/embed/exJkZ0fLiWY", // Lien vers la vidéo YouTube à ajouter si disponible
+    title: "Conception d’une solution informatique (HappySport)",
+    github: "https://github.com/jordantatue/Analyse_Projet_HappySport",
+    video: "https://www.youtube.com/embed/exJkZ0fLiWY",
     description: [
-      "Analyse et conception de projet visant à développer une solution informatique adaptée aux besoins spécifiques d'une association sportive.",
-      "Étapes réalisées : analyse des besoins, conception de l'architecture logicielle, et élaboration d'un prototype fonctionnel.",
-      "Mise en œuvre des bonnes pratiques de gestion de projet et de développement logiciel pour assurer la qualité et la maintenabilité de la solution.",
+      "J’ai participé à l’analyse des besoins et à la conception d’un prototype fonctionnel pour une association sportive.",
+      "J’ai participé à l’architecture logicielle, aux tests et à l’application de bonnes pratiques pour garantir la qualité."
     ],
   },
   {
     title: "Site de commande",
-    github: "https://github.com/jordantatue/Burger_Code_Securise", // Lien GitHub à ajouter si disponible
-    video: "https://www.youtube.com/embed/pw1yJ2cXEiA", // Lien vers la vidéo YouTube à ajouter si disponible
+    github: "https://github.com/jordantatue/Burger_Code_Securise",
+    video: "https://www.youtube.com/embed/pw1yJ2cXEiA",
     description: [
-      "C’est un projet de developpemnet qui implemente les bases du front-end, plus precisement le design et la mise en place des pages web a l’aide du HTML5, CSS3 et bosststrap4.", "Il implemmente un site dynamique et responsive dont vous pourrez apprecier le code sur mon espace gitHub."," Deuxièmement j’ai utilisé le MySQL et le PHP pour pouvoir gerer le back-end, donc la base de données et les différentes requetes pour avoir accés au données en fonction du type d’utilisateur qui se connecte.",
+      "J’ai participé à la conception d’un site dynamique responsive en HTML5, CSS3 et Bootstrap 4.",
+      "J’ai participé au développement back-end en PHP / MySQL pour gérer les utilisateurs, commandes et données."
     ],
   },
   {
     title: "Application de gestion des contacts",
-    github: "https://github.com/jordantatue/Applications-de-contacts-", // Lien GitHub à ajouter si disponible
-    video: "https://www.youtube.com/embed/0Q9OOUkNmBo", // Lien vers la vidéo YouTube à ajouter si disponible
+    github: "https://github.com/jordantatue/Applications-de-contacts-",
+    video: "https://www.youtube.com/embed/0Q9OOUkNmBo",
     description: [
-      "Application desktop développée en Java utilisant le framework JFOX qui combine les technologies java JEE et le java FX, permettant la gestion efficace des contacts.",
-      "Fonctionnalités : ajout, modification, suppression de contacts, et recherche avancée.",
-      "Interface utilisateur conviviale et persistance des données assurée par une base de données relationnelle.",
+      "J’ai participé au développement d’une application desktop en Java (JavaFX / JEE) pour gérer un annuaire de contacts.",
+      "J’ai participé à la création de fonctionnalités : ajout, modification, suppression, recherche avancée, interface intuitive et persistance."
     ],
   },
 ];
 
-
-export const awards = []
+export const awards = [];

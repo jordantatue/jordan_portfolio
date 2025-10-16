@@ -122,14 +122,15 @@ export default function HeroSection() {
           <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-purple-500/20 dark:border-purple-500/10 shadow-sm">
             <p className="text-muted-foreground pl-4 py-2 mb-4 relative">
               <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
-              👋 Moi c’est Jordan Tatue — Ingénieur en informatique, passionné de code, de data, IA et de bonnes pratiques DevOps. À la croisée du développement Full Stack, de l’automatisation IT et de la data science, j’aime transformer les lignes de code en solutions concrètes, utiles et (soyons honnêtes) un peu stylées.
+              👋 Salut, je suis <strong>Jordan Tatue</strong>, ingénieur en informatique passionné par le code, la data, l’IA et les pratiques DevOps.
               <br /><br />
-              Actuellement en alternance chez SG ASSU (Groupe Société Générale), je mets les mains dans le cambouis technique : Java, Python, Django, Ansible, PostgreSQL, tests automatisés, Linux... bref, un vrai couteau suisse numérique en action.
+              Pendant deux années chez <strong>SG ASSU (Groupe Société Générale)</strong>, j’ai participé à un projet technique ambitieux dans un cadre <strong>agile et évolutif</strong>. J’ai contribué à des modules Full Stack (Python / Django, PHP / Symfony, Java / Groovy), à l’automatisation, à la migration d’infrastructures (CentOS → Red Hat, Cloud Gen1 → Gen2), et à la mise en place de pipelines CI/CD (GitLab, Jenkins, Docker).
               <br /><br />
-              Mais plutôt que de tout te raconter ici, et si on faisait le tour ensemble ?
-              <br />
-              👉 Mon portfolio est là pour ça : un condensé de mes projets, compétences et expériences. Promis, il y a plus de code que de blabla — et peut-être même de quoi te donner envie de me recruter 😄
+              Je suis maintenant à la recherche d’un poste stimulant où je pourrai m’immerger dans des projets innovants, relever des défis techniques, et transformer la complexité en solutions élégantes.
+              <br /><br />
+              👉 Mon portfolio regroupe mes réalisations techniques, compétences et trajectoire professionnelle : plus de code que de discours, et probablement assez pour susciter ta curiosité 😉
             </p>
+
           </div>
         </MotionWrapper>
       </div>
