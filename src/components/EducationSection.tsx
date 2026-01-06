@@ -99,7 +99,7 @@ export default function EducationSection() {
               )}
 
               {languages.length > 0 && (
-                <div className="text-right">
+                <div className="text-left">
                   <TimelineItem
                     key="languages"
                     title="🌐 Langues"
@@ -108,7 +108,7 @@ export default function EducationSection() {
                     isLast={true}
                     index={education.length + 1}
                   >
-                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground text-right">
+                    <ul className="list-disc ml-5 list-inside space-y-2 text-sm text-muted-foreground">
                       {languages.map((lang, i) => (
                         <motion.li
                           key={lang}
