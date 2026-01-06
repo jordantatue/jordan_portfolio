@@ -6,6 +6,8 @@ interface TimelineItemProps {
   title: string;
   subtitle: string;
   date: string;
+  logoSrc?: string;
+  logoAlt?: string;
   isLast?: boolean;
   index?: number;
   children?: React.ReactNode;
@@ -15,10 +17,17 @@ export default function TimelineItem({
   title,
   subtitle,
   date,
+  logoSrc,
+  logoAlt,
   isLast = false,
   index = 0,
   children,
 }: TimelineItemProps) {
+  const baseUrl = import.meta.env.BASE_URL ?? "/";
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const resolvedLogoSrc = logoSrc ? `${normalizedBase}${logoSrc}` : "";
+  const hasLogo = Boolean(resolvedLogoSrc);
+
   return (
     <motion.div
       className="relative flex gap-6"
@@ -52,15 +61,29 @@ export default function TimelineItem({
       </div>
       <div className={cn("pb-8", isLast ? "pb-0" : "")}>
         <motion.div
-          className="flex flex-col gap-0.5"
+          className={cn(
+            hasLogo ? "flex items-start gap-4" : "flex flex-col gap-0.5"
+          )}
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <h3 className="font-medium">{title}</h3>
-          <p className="text-sm text-muted-foreground">{subtitle}</p>
-          <p className="text-xs text-muted-foreground/70 mb-2">{date}</p>
+          {hasLogo && (
+            <div className="h-16 w-16 rounded-md border border-border/40 bg-muted/40 p-2 flex items-center justify-center overflow-hidden">
+              <img
+                src={resolvedLogoSrc}
+                alt={logoAlt ?? ""}
+                className="max-h-full max-w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          )}
+          <div className="flex flex-col gap-0.5">
+            <h3 className="font-medium">{title}</h3>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
+            <p className="text-xs text-muted-foreground/70 mb-2">{date}</p>
+          </div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}

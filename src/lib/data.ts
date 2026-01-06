@@ -9,166 +9,227 @@ export const personalInfo = {
 
 export const workExperience = [
   {
-    company: "Société Générale (ASSU)",
+    company: "Société Générale – Assurances",
     location: "Orléans / Remote",
-    position: "Alternant Développeur Full Stack",
+    position: "Alternant Développeur Full-Stack & DevOps",
     period: "Septembre 2023 – Septembre 2025",
+    logo: "logos/societe-generale.jpg",
     achievements: [
-      "J’ai participé au développement et à l’amélioration de plateformes stratégiques du groupe, en utilisant Python, PHP, Java et JavaScript pour répondre à des besoins métiers complexes.",
-      "J’ai participé à la conception du module de planning collaborateur : affichage du taux de présence, automatisation des extractions, interface intuitive — avec Django / Python.",
-      "J’ai participé à la création du module de réservation de parking : carte interactive, calcul dynamique des disponibilités selon les présences, et automatisation des extractions — en Django / Python.",
-      "J’ai participé à la centralisation des jobs Control-M via une interface web intégrée, combinant Django / Python et DataTables.js pour un affichage interactif et une supervision simplifiée.",
-      "J’ai participé à la gestion des incidents & changements : récupération automatisée de tickets via API UNITY, génération de rapports envoyés pour réunions CRB — mise en œuvre en PHP / Symfony.",
-      "J’ai participé à la transformation des infrastructures : migration de CentOS vers Red Hat Enterprise Linux et transition des environnements Cloud Gen1 vers Gen2, avec refonte des processus d’automatisation basés sur des pipelines CI/CD (GitLab CI, Jenkins, Docker).",
-      "J’ai participé à la migration des applications vers des instances OCS, garantissant une transition technique fluide, une compatibilité stricte et une scalabilité adaptée.",
-      "J’ai participé à l’automatisation des déploiements et migrations via scripts Python et playbooks Ansible, réduisant les interventions manuelles et améliorant la fiabilité des livraisons.",
-      "J’ai participé à l’analyse, à la correction et au durcissement de systèmes Linux (CentOS / Red Hat), renforçant la sécurité et la robustesse des environnements critiques.",
-      "J’ai participé à la transition vers une équipe en Roumanie : passation de connaissances en anglais, rédaction de documentation exhaustive et accompagnement des collaborateurs distants."
+      "Développement et maintenance d’applications internes pour la gestion des plannings, réservations, incidents et authentification.",
+      "Conception de modules métiers Full Stack en Python/Django, Java/Spring et PHP/Symfony.",
+      "Centralisation et supervision de traitements applicatifs via interfaces web dédiées.",
+      "Automatisation des déploiements, migrations et tâches récurrentes via scripts Python/Bash et playbooks Ansible.",
+      "Mise en place et exploitation de pipelines CI/CD (GitLab CI, Jenkins, Docker, GitHub Actions).",
+      "Participation aux migrations d’infrastructure : CentOS → Red Hat et Cloud Gen1 → Gen2 (AWS, Azure, GCP).",
+      "Collaboration internationale avec des équipes en France et en Roumanie, documentation et passation de connaissances."
     ],
   },
   {
-    company: "Enercity – Hackathon Data Science",
-    location: "Hanovre, Allemagne",
-    position: "Participant / Data Scientist",
-    period: "Novembre 2024",
+    company: "Groupe Zéphir",
+    location: "Châteaubriant, France",
+    position: "Développeur Full-Stack Java / Angular",
+    period: "Décembre 2025 – Présent",
+    logo: "logos/groupe-zephir.png",
     achievements: [
-      "J’ai participé à un projet de prédiction énergétique pour la ville de Hanovre, transformant des données historiques et démographiques en modèles exploitables.",
-      "J’ai participé à la préparation des données : nettoyage, normalisation, gestion des valeurs manquantes et outliers, et exploration des corrélations via matrices de Pearson.",
-      "J’ai participé à la modélisation : implémentation d’un modèle de régression multiple, évaluation via RMSE / MAE, et optimisation avec XGBoost pour maximiser la précision.",
-      "J’ai participé à la construction de notebooks Python (pandas, numpy, scikit-learn, XGBoost) pour assurer traçabilité, reproductibilité et documentation de l’analyse.",
-      "J’ai participé à la restitution du projet : création de visualisations interactives et présentation d’un rapport technique détaillé au jury avec recommandations."
+      "Contribution au projet SIROCCO, portail métier destiné aux agents et courtiers du groupe, développé en Java (Spring, CLEVA 14) et Angular.",
+      "Participation aux cycles de livraison complets : besoins métiers, conception technique, développement, déploiement et support utilisateurs.",
+      "Développement de fonctionnalités business (challenges commerciaux, mécanismes de bonus, tableaux de bord et indicateurs de performance) avec Oracle SQL et Hibernate.",
+      "Implémentation des règles de calcul métier et des workflows applicatifs, intégrés au système existant.",
+      "Rédaction et maintien de la documentation technique assurant la continuité Business → Tech → Ops → Users → Reporting.",
+      "Travail en environnement Windows et Linux, sur des plateformes Jenkins, Maven et WildFly, du stade recette à la production."
+    ],
+  },
+
+  {
+    company: "Enercity",
+    location: "Hanovre, Allemagne",
+    position: "Participant – Hackathon Data Science",
+    period: "Novembre 2024",
+    logo: "logos/enercity.png",
+    achievements: [
+      "Conception d’un modèle de prédiction de la consommation énergétique par régression linéaire et modèles avancés (Python, pandas, scikit-learn, XGBoost, TensorFlow).",
+      "Préparation et analyse des données : nettoyage, normalisation, gestion des valeurs manquantes et exploration statistique.",
+      "Évaluation et optimisation des performances des modèles à l’aide de métriques adaptées.",
+      "Présentation des résultats sous forme de visualisations et d’un rapport technique destiné aux équipes métier."
     ],
   },
 ];
 
 export const education = [
   {
-    institution: "3iL Ingénieurs",
+    institution: "Groupe 3iL",
     location: "Limoges, France",
-    degree: "Diplôme d’ingénieur – Informatique & Intelligence Artificielle (accréditation CTI)",
-    period: "2022 – 2025",
+    degree: "Diplôme d’ingénieur – Développement, IA & DevOps (CTI)",
+    period: "2020 – 2025",
+    logo: "logos/3il.svg",
     achievements: [
-      "J’ai participé à une formation exhaustive couvrant le développement logiciel, le machine learning, le traitement de données et la gestion de projets.",
-      "J’ai participé à des projets tutorés et immersifs afin d’appliquer les concepts académiques à des cas industriels concrets.",
-      "J'ai fais une mobilité internationale à la Hochschule Hanovre en Allemagne en 2024, renforçant mes compétences techniques et linguistiques.",
-    ]
+      "Formation en développement logiciel, intelligence artificielle, DevOps et cloud.",
+      "Projets académiques et industriels en environnement agile (Scrum, SAFe)."
+    ],
   },
   {
-    institution: "Institut Universitaire de la Côte (IUC)",
-    location: "Douala, Cameroun",
-    degree: "Classes préparatoires MPSI",
-    period: "2020 – 2022",
+    institution: "Hochschule Hannover",
+    location: "Hanovre, Allemagne",
+    degree: "Master 2 – Machine Learning & Data (Erasmus)",
+    period: "2024 – 2025",
+    logo: "logos/hsh.svg",
     achievements: [
-      "J’ai participé à un cursus intensif en mathématiques, physique et sciences de l’ingénieur, fondement essentiel de ma rigueur technique.",
-      "J’ai participé à la préparation aux concours d’écoles d’ingénieurs françaises, renforçant mon esprit analytique et ma discipline."
+      "Spécialisation en machine learning, data science et infrastructures cloud.",
+      "Projets de modélisation prédictive et déploiement de modèles."
     ],
   },
 ];
 
 export const skills = {
+  methodologyAndModeling: [
+    "DDD",
+    "SCRUM",
+    "SAFe",
+    "Kanban",
+    "JIRA",
+    "Confluence"
+  ],
+
+  cloud: [
+    "AWS",
+    "GCP",
+    "Azure"
+  ],
+
+  cicd: [
+    "GitLab CI",
+    "Jenkins",
+    "GitHub Actions",
+    "SonarQube",
+    "Terraform"
+  ],
+
+  containerizationAndOrchestration: [
+    "Docker",
+    "Kubernetes"
+  ],
+
+  monitoringAndSecurity: [
+    "Prometheus",
+    "Grafana",
+    "Kafka",
+    "ELK",
+    "OpenID"
+  ],
+
+  dataAndAI: [
+    "Machine Learning",
+    "Deep Learning",
+    "Classification",
+    "Clustering",
+    "LLMs",
+    "OCR (Data Extraction)",
+    "RAG"
+  ],
+
+  frameworks: [
+    "React.js",
+    "Angular",
+    "Node.js",
+    "Django",
+    "Spring Boot"
+  ],
+
   programmingLanguages: [
     "Python",
     "Java",
-    "PHP",
     "JavaScript",
     "C",
     "C++",
-    "C#",
-    "Shell"
+    "Go",
+    "Bash"
   ],
-  frontendDevelopment: [
-    "HTML5",
-    "CSS3",
-    "Bootstrap",
-    "JavaScript",
-    "React",
+
+  frontend: [
+    "React.js",
     "Angular",
-    "Vue.js",
-    "Astro"
+    "JavaScript",
+    "UX"
   ],
-  backendDevelopment: [
-    "Django",
-    "Flask",
-    "FastAPI",
-    "Spring Boot",
-    "JEE",
-    "Grails / Groovy",
-    "Symfony",
-    "Laravel",
+
+  backend: [
     "Node.js",
-    "REST API",
+    "Django",
+    "Spring Boot"
   ],
-  databaseAndStorage: [
+
+  databases: [
     "PostgreSQL",
     "MySQL",
     "Oracle",
     "MongoDB",
-    "SQLite",
-    "NoSQL"
-  ],
-  cloudAndDevOps: [
-    "Linux (RHEL / CentOS)",
-    "Ansible",
-    "Docker",
-    "Kubernetes",
-    "GitLab CI",
-    "Jenkins",
-    "AWS",
-    "Scripts Shell"
-  ],
-  toolsAndMethods: [
-    "Git",
-    "GitHub",
-    "GitLab",
-    "JIRA",
-    "UML",
-    "DDD",
-    "MERISE",
-    "SCRUM",
-    "Kanban",
-    "SAFe",
-    "Pytest",
-    "JUnit"
-  ],
+    "NoSQL",
+    "BigQuery",
+    "Apache Spark"
+  ]
 };
+
 
 export const certifications = [
   { name: "Certification Python" },
-  { name: "Certification Angular & NestJS" },
-  { name: "Certification Scrum Fundamental" },
+  { name: "Certification Angular" },
+  { name: "Certification React" },
+  { name: "Certification Scrum" },
+  { name: "Certification Kanban" },
   { name: "TOEIC" },
 ];
 
 export const languages = [
-  "Français (professionnel)",
+  "Français (natif)",
   "Anglais (professionnel)"
 ];
 
 export const strengths = [
-  "Autonomie, rigueur et planification",
-  "Esprit d’initiative et adaptabilité",
-  "Capacité à collaborer dans des contextes techniques exigeants",
-  "Leadership, mentorat et montée en compétence collective"
+  "Autonomie et sens des responsabilités",
+  "Polyvalence et adaptabilité",
+  "Capacité à évoluer dans des environnements complexes",
+  "Esprit d’équipe et transmission des connaissances"
 ];
 
 export const projects = [
+  {
+    title: "House Price Prediction – API de prédiction ML",
+    github: "https://github.com/jordantatue/House_Price_Prediction",
+    video: "",
+    description: [
+      "Développement d’une API REST de prédiction du prix des maisons basée sur un modèle RandomForest.",
+      "Pipeline complet de machine learning : entraînement, évaluation et sérialisation du modèle (Python, scikit-learn, pandas).",
+      "Exposition des prédictions via FastAPI et Uvicorn, avec endpoints dédiés (health, version, metrics).",
+      "Supervision et observabilité intégrées avec Prometheus et Grafana, et déploiement containerisé avec Docker."
+    ],
+  },
+  {
+    title: "Suivi des candidatures – Extension Chrome avec IA",
+    github: "https://github.com/jordantatue/job-tracker",
+    video: "",
+    description: [
+      "Conception d’une extension Chrome pour le suivi intelligent et centralisé des candidatures.",
+      "Interface interactive développée en React avec Vite et Bootstrap : tableau dynamique, filtres, statistiques et gestion des statuts.",
+      "Persistance locale des données via chrome.storage.local, garantissant confidentialité et autonomie.",
+      "Intégration d’un chatbot IA connecté à l’API OpenRouter (Mistral, Llama) pour analyser les offres et optimiser les candidatures."
+    ],
+  },
   {
     title: "Snap-Faces",
     github: "https://github.com/jordantatue/snapface",
     video: "https://youtube.com/embed/wMjSthcGC6M",
     description: [
-      "J’ai participé à la création d’une application web Angular de partage de photos avec système de likes et interface interactive.",
-      "J’ai participé à la définition d’une architecture modulaire et de services de gestion des données performants.",
-      "J’ai participé à la synchronisation entre front-end et back-end pour assurer cohérence et rapidité d’accès."
+      "Application web de partage de photos avec système de likes.",
+      "Architecture modulaire et synchronisation front-end / back-end."
     ],
   },
   {
-    title: "Conception d’une solution informatique (HappySport)",
+    title: "HappySport – Conception de solution informatique",
     github: "https://github.com/jordantatue/Analyse_Projet_HappySport",
     video: "https://www.youtube.com/embed/exJkZ0fLiWY",
     description: [
-      "J’ai participé à l’analyse des besoins et à la conception d’un prototype fonctionnel pour une association sportive.",
-      "J’ai participé à l’architecture logicielle, aux tests et à l’application de bonnes pratiques pour garantir la qualité."
+      "Analyse des besoins et conception d’un prototype fonctionnel.",
+      "Définition de l’architecture logicielle et des bonnes pratiques."
     ],
   },
   {
@@ -176,8 +237,8 @@ export const projects = [
     github: "https://github.com/jordantatue/Burger_Code_Securise",
     video: "https://www.youtube.com/embed/pw1yJ2cXEiA",
     description: [
-      "J’ai participé à la conception d’un site dynamique responsive en HTML5, CSS3 et Bootstrap 4.",
-      "J’ai participé au développement back-end en PHP / MySQL pour gérer les utilisateurs, commandes et données."
+      "Site web dynamique et responsive.",
+      "Gestion des utilisateurs et commandes avec persistance des données."
     ],
   },
   {
@@ -185,8 +246,8 @@ export const projects = [
     github: "https://github.com/jordantatue/Applications-de-contacts-",
     video: "https://www.youtube.com/embed/0Q9OOUkNmBo",
     description: [
-      "J’ai participé au développement d’une application desktop en Java (JavaFX / JEE) pour gérer un annuaire de contacts.",
-      "J’ai participé à la création de fonctionnalités : ajout, modification, suppression, recherche avancée, interface intuitive et persistance."
+      "Application desktop permettant la gestion complète d’un annuaire.",
+      "Fonctionnalités de recherche avancée et persistance des données."
     ],
   },
 ];

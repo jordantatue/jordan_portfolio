@@ -15,7 +15,7 @@ export default function EducationSection() {
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <MotionWrapper>
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left">
-            🎓 Education
+            🎓 Formation
           </h2>
         </MotionWrapper>
 
@@ -23,9 +23,11 @@ export default function EducationSection() {
           {education.map((edu, index) => (
             <TimelineItem
               key={edu.institution}
-              title={`🎓 ${edu.degree}`}
-              subtitle={`🏛️ ${edu.institution}`}
-              date={`📅 ${edu.period}`}
+              title={edu.degree}
+              subtitle={edu.institution}
+              date={edu.period}
+              logoSrc={edu.logo}
+              logoAlt={`Logo ${edu.institution}`}
               isLast={index === education.length - 1}
               index={index}
             >
@@ -46,7 +48,7 @@ export default function EducationSection() {
                       <Award className="h-4 w-4 text-purple-500" />
                     </div>
                     <h4 className="text-sm font-medium">
-                      ✨ Achievements & Activities
+                      ✨ Réalisations & activités
                     </h4>
                   </div>
                   <ul className="list-none ml-4 space-y-2 text-sm">
@@ -67,55 +69,62 @@ export default function EducationSection() {
               )}
             </TimelineItem>
           ))}
-          <br />
-          {certifications.length > 0 && (
-            <TimelineItem
-              key="certifications"
-              title="📜 Certifications"
-              subtitle=""
-              date=""
-              isLast={false}
-              index={education.length}
-            >
-              <ul className="list-disc ml-8 space-y-2 text-sm text-muted-foreground">
-                {certifications.map((cert, i) => (
-                  <motion.li
-                    key={cert.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * i }}
-                    viewport={{ once: true }}
+          {(certifications.length > 0 || languages.length > 0) && (
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {certifications.length > 0 && (
+                <div className="text-left">
+                  <TimelineItem
+                    key="certifications"
+                    title="📜 Certifications"
+                    subtitle=""
+                    date=""
+                    isLast={true}
+                    index={education.length}
                   >
-                    {cert.name}
-                  </motion.li>
-                ))}
-              </ul>
-            </TimelineItem>
-          )}
+                    <ul className="list-disc ml-8 space-y-2 text-sm text-muted-foreground">
+                      {certifications.map((cert, i) => (
+                        <motion.li
+                          key={cert.name}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 * i }}
+                          viewport={{ once: true }}
+                        >
+                          {cert.name}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </TimelineItem>
+                </div>
+              )}
 
-          {languages.length > 0 && (
-            <TimelineItem
-              key="languages"
-              title="🌐 Languages"
-              subtitle=""
-              date=""
-              isLast={true}
-              index={education.length + 1}
-            >
-              <ul className="list-disc ml-8 space-y-2 text-sm text-muted-foreground">
-                {languages.map((lang, i) => (
-                  <motion.li
-                    key={lang}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * i }}
-                    viewport={{ once: true }}
+              {languages.length > 0 && (
+                <div className="text-right">
+                  <TimelineItem
+                    key="languages"
+                    title="🌐 Langues"
+                    subtitle=""
+                    date=""
+                    isLast={true}
+                    index={education.length + 1}
                   >
-                    {lang}
-                  </motion.li>
-                ))}
-              </ul>
-            </TimelineItem>
+                    <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground text-right">
+                      {languages.map((lang, i) => (
+                        <motion.li
+                          key={lang}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 * i }}
+                          viewport={{ once: true }}
+                        >
+                          {lang}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </TimelineItem>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

@@ -1,5 +1,4 @@
 import ThemeToggle from "./ui/theme-toggle";
-import { personalInfo } from "@/lib/data";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,18 +7,33 @@ export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const baseUrl = import.meta.env.BASE_URL ?? "/";
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const logoSrc = `${normalizedBase}logos/site_logo.png`;
+  const navLabels: Record<string, string> = {
+    experience: "Expérience",
+    skills: "Compétences",
+    projects: "Projets",
+    awards: "Récompenses",
+    education: "Formation",
+  };
 
   return (
     <header className="fixed top-0 z-50 w-full backdrop-blur-md backdrop-filter bg-background/70 dark:bg-background/40 border-b border-border/40 supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-4xl mx-auto p-4 flex justify-between items-center">
         <motion.a
-          className="flex items-center text-lg font-medium"
-          href="/"
+          className="flex items-center"
+          href={normalizedBase}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="mr-2" aria-label="Home" role="img">🏠</span>
-          {personalInfo.name}
+          <div className="h-14 w-14 md:h-16 md:w-16 rounded-full bg-muted/30 p-2 flex items-center justify-center overflow-hidden">
+            <img
+              src={logoSrc}
+              alt="Logo du site"
+              className="h-full w-full object-contain"
+            />
+          </div>
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -40,7 +54,7 @@ export default function GlassHeader() {
                 {item === "projects" && "🚀 "}
                 {item === "awards" && "🏆 "}
                 {item === "education" && "🎓 "}
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {navLabels[item] ?? item}
               </motion.a>
             )
           )}
@@ -88,7 +102,7 @@ export default function GlassHeader() {
                     {item === "projects" && "🚀 "}
                     {item === "awards" && "🏆 "}
                     {item === "education" && "🎓 "}
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                    {navLabels[item] ?? item}
                   </motion.a>
                 )
               )}

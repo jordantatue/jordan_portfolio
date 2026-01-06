@@ -44,6 +44,56 @@ const skillCategoryVariants = {
   },
 };
 
+const skillCategories: Array<{
+  key: keyof typeof skills;
+  label: string;
+}> = [
+  {
+    key: "programmingLanguages",
+    label: "Langages de programmation",
+  },
+  {
+    key: "frameworks",
+    label: "Frameworks",
+  },
+  {
+    key: "frontend",
+    label: "Développement front-end",
+  },
+  {
+    key: "backend",
+    label: "Développement back-end",
+  },
+  {
+    key: "databases",
+    label: "Bases de données",
+  },
+  {
+    key: "cloud",
+    label: "Cloud",
+  },
+  {
+    key: "cicd",
+    label: "CI/CD",
+  },
+  {
+    key: "containerizationAndOrchestration",
+    label: "Conteneurs & orchestration",
+  },
+  {
+    key: "monitoringAndSecurity",
+    label: "Monitoring & sécurité",
+  },
+  {
+    key: "dataAndAI",
+    label: "Data & IA",
+  },
+  {
+    key: "methodologyAndModeling",
+    label: "Méthodologies & modélisation",
+  },
+];
+
 export default function SkillsSection() {
   return (
     <section
@@ -55,94 +105,38 @@ export default function SkillsSection() {
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <MotionWrapper>
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left">
-            🛠️ Skills
+            🛠️ Compétences
           </h2>
         </MotionWrapper>
 
         <motion.div
-          className="space-y-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">💻</span> Programming Languages
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.programmingLanguages.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
+          {skillCategories.map((category) => {
+            const items = skills[category.key];
+            if (!items || items.length === 0) {
+              return null;
+            }
 
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">🎨</span> Frontend Development
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.frontendDevelopment.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">⚙️</span> Backend Development
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.backendDevelopment.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">🗄️</span> Database & Storage
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.databaseAndStorage.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">☁️</span> Cloud & DevOps
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.cloudAndDevOps.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <motion.div variants={skillCategoryVariants}>
-            <GlassCard className="p-4">
-              <h3 className="text-lg font-medium mb-3 text-center md:text-left flex items-center">
-                <span className="mr-2 text-xl">🔧</span> Tools & Methods
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {skills.toolsAndMethods.map((skill, index) => (
-                  <SkillTag key={skill} skill={skill} index={index} />
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
+            return (
+              <motion.div key={category.key} variants={skillCategoryVariants}>
+                <GlassCard className="p-4">
+                  <h3 className="text-lg font-medium mb-3 text-center md:text-left">
+                    {category.label}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                    {items.map((skill, index) => (
+                      <SkillTag key={skill} skill={skill} index={index} />
+                    ))}
+                  </div>
+                </GlassCard>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

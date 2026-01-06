@@ -48,7 +48,7 @@ export default function HeroSection() {
               className="text-xl text-muted-foreground mb-6"
               variants={childVariants}
             >
-              Ingénieur informatique 👨‍💻
+              Ingénieur DevOps | IA | Full-Stack 👨‍💻
             </motion.p>
 
             <motion.div
@@ -61,7 +61,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, color: "#4b5563" }}
               >
                 <MapPin className="h-4 w-4 mr-2" />
-                 {personalInfo.location}
+                {personalInfo.location}
               </motion.div>
 
               <motion.a
@@ -71,7 +71,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, color: "#4b5563" }}
               >
                 <Mail className="h-4 w-4 mr-2" />
-                 {personalInfo.email}
+                {personalInfo.email}
               </motion.a>
 
               <motion.a
@@ -83,7 +83,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, color: "#4b5563" }}
               >
                 <Github className="h-4 w-4 mr-2" />
-                 GitHub
+                GitHub
               </motion.a>
 
               <motion.a
@@ -95,7 +95,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05, color: "#4b5563" }}
               >
                 <Linkedin className="h-4 w-4 mr-2" />
-                 LinkedIn
+                LinkedIn
               </motion.a>
             </motion.div>
           </div>
@@ -122,15 +122,24 @@ export default function HeroSection() {
           <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-purple-500/20 dark:border-purple-500/10 shadow-sm">
             <p className="text-muted-foreground pl-4 py-2 mb-4 relative">
               <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
-              👋 Salut, je suis <strong>Jordan Tatue</strong>, ingénieur en informatique passionné par le code, la data, l’IA et les pratiques DevOps.
-              <br /><br />
-              Pendant deux années chez <strong>SG ASSU (Groupe Société Générale)</strong>, j’ai participé à un projet technique ambitieux dans un cadre <strong>agile et évolutif</strong>. J’ai contribué à des modules Full Stack (Python / Django, PHP / Symfony, Java / Groovy), à l’automatisation, à la migration d’infrastructures (CentOS → Red Hat, Cloud Gen1 → Gen2), et à la mise en place de pipelines CI/CD (GitLab, Jenkins, Docker).
-              <br /><br />
-              Je suis maintenant à la recherche d’un poste stimulant où je pourrai m’immerger dans des projets innovants, relever des défis techniques, et transformer la complexité en solutions élégantes.
-              <br /><br />
-              👉 Mon portfolio regroupe mes réalisations techniques, compétences et trajectoire professionnelle : plus de code que de discours, et probablement assez pour susciter ta curiosité 😉
+              👋 Bonjour, je m’appelle <strong>Jordan Tatue</strong>.
+              <br />
+              <br />
+              Curieux, persévérant et animé par le goût du travail bien fait,
+              j’aime comprendre, apprendre et construire des solutions utiles.
+              J’accorde une grande importance à la rigueur, à la clarté et à la
+              collaboration.
+              <br />
+              <br />
+              Mon parcours m’a permis d’évoluer dans des environnements
+              exigeants, de gagner en autonomie et de développer une vraie
+              capacité d’adaptation, aussi bien en équipe qu’en responsabilité
+              individuelle.
+              <br />
+              <br />
+              👉 Ce portfolio reflète mon parcours, mes réalisations et ma
+              manière de travailler. Je te laisse le découvrir.
             </p>
-
           </div>
         </MotionWrapper>
       </div>
