@@ -1,186 +1,60 @@
-# Modern Portfolio Template
+# Portfolio — Jordan Tatue
 
-A sleek, responsive portfolio website built with **Astro**, **React**, and **Tailwind CSS**, featuring modern animations and stunning glassmorphism effects.
+Portfolio personnel présentant mon parcours de développeur Full-Stack & DevOps : expériences, compétences, projets et formation.
 
-![Portfolio Screenshot](https://github.com/jordantatue/jordan_portfolio/raw/master/assets/image_site.png)
+🔗 **[jordantatue.github.io/jordan_portfolio](https://jordantatue.github.io/jordan_portfolio/)**
 
-## ✨ Features
+![Aperçu du site](assets/image_site.png)
 
-- **Modern Design** – Clean, professional layout with elegant glassmorphism
-- **Animations** – Smooth transitions and interactive UI via Framer Motion
-- **Dark/Light Mode** – Automatic theme switching with system preference detection
-- **Fully Responsive** – Optimized for mobile, tablet, and desktop
-- **Blazing Fast** – Powered by Astro for superior performance
-- **Modular Structure** – Built for easy customization and scalability
-- **SEO Friendly** – Structured content and meta tags for better visibility
+## Stack technique
 
-## 🚀 Demo
+| Domaine | Technologies |
+| --- | --- |
+| Framework | [Astro 5](https://astro.build/) (rendu statique) |
+| UI | [React 19](https://react.dev/), [Tailwind CSS 4](https://tailwindcss.com/) |
+| Animations | [Framer Motion](https://www.framer.com/motion/), AOS |
+| Icônes | [Lucide](https://lucide.dev/) |
+| Déploiement | GitHub Actions → GitHub Pages |
 
-👉 [Live Demo](https://rishilol.vercel.app/)
+## Architecture
 
-## 🛠 Getting Started
+```
+src/
+├── components/     Sections de la page (Hero, Experience, Skills, Projects…)
+│   └── ui/         Primitives réutilisables (button, card, glass-card…)
+├── layouts/        Layout.astro — structure HTML, métadonnées, thème
+├── lib/
+│   ├── data.ts     ← TOUT le contenu du site (expériences, projets, compétences)
+│   └── utils.ts    Helpers (fusion de classes Tailwind)
+├── pages/          index.astro — assemblage des sections
+└── styles/         global.css — variables de thème clair/sombre
+```
 
-### Prerequisites
+**Pour mettre à jour le contenu, un seul fichier : `src/lib/data.ts`.** Les composants consomment ces données, aucune modification de code n'est nécessaire.
 
-- Node.js (v18+ recommended)
-- npm / yarn / bun
+## Démarrage
 
-### Installation
+Prérequis : Node.js 18+.
 
 ```bash
-git clone https://github.com/jordantatue/jordan_portfolio.git
-cd my-portfolio
-
-# Install dependencies
 npm install
-# or
-yarn install
-# or
-bun install
-
-# Start development server
-npm run dev
-# or
-yarn dev
-# or
-bun dev
+npm run dev      # serveur local sur http://localhost:4321/jordan_portfolio/
 ```
 
-Visit `http://localhost:4321` in your browser to see it in action.
+| Commande | Effet |
+| --- | --- |
+| `npm run dev` | Serveur de développement avec rechargement à chaud |
+| `npm run build` | Build de production dans `static/` |
+| `npm run preview` | Prévisualisation locale du build |
 
-## 🧩 Customizing the Portfolio
+## Déploiement
 
-All your content lives inside `src/lib/data.ts`. Update the following to make it yours:
+Chaque push sur `master` déclenche `.github/workflows/deploy.yml`, qui construit le site et le publie sur la branche `gh-pages`.
 
-### 1. Personal Info
+Le site étant servi depuis un sous-chemin, `base: '/jordan_portfolio/'` est défini dans `astro.config.mjs`. **Toute référence à un fichier de `public/` doit donc être préfixée par `import.meta.env.BASE_URL`**, jamais écrite en dur.
 
-```ts
-export const personalInfo = {
-  name: "Your Name",
-  location: "Your Location",
-  email: "your.email@example.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://www.linkedin.com/in/yourusername/",
-};
-```
+## Licence
 
-### 2. Work Experience
+MIT — voir [LICENSE](LICENSE).
 
-```ts
-export const workExperience = [
-  {
-    company: "Company Name",
-    location: "Location",
-    position: "Your Position",
-    period: "Start Date - End Date",
-    achievements: [
-      "Achievement 1",
-      "Achievement 2",
-    ],
-  },
-];
-```
-
-### 3. Education
-
-```ts
-export const education = [
-  {
-    institution: "University Name",
-    location: "Location",
-    degree: "Your Degree",
-    period: "Start Date - End Date",
-    achievements: [
-      "Achievement 1",
-      "Achievement 2",
-    ],
-  },
-];
-```
-
-### 4. Skills
-
-```ts
-export const skills = {
-  programmingLanguages: ["TypeScript", "Python"],
-  frontendDevelopment: ["React", "Next.js"],
-  // and more...
-};
-```
-
-### 5. Projects
-
-```ts
-export const projects = [
-  {
-    title: "Project Name",
-    github: "https://github.com/yourusername/project",
-    description: [
-      "What it does",
-      "Technologies used",
-    ],
-  },
-];
-```
-
-### 6. Awards
-
-```ts
-export const awards = [
-  {
-    name: "Award Name",
-    issuer: "Issuer",
-    date: "Date",
-    type: "Type",
-    position: "Position",
-  },
-];
-```
-
-## 📦 Build for Production
-
-```bash
-npm run build
-# or
-yarn build
-# or
-bun run build
-```
-
-To preview the production build locally:
-
-```bash
-npm run preview
-# or
-yarn preview
-```
-
-## 📤 Deployment
-
-Easily deploy to platforms like **Vercel**, **Netlify**, **GitHub Pages**, or any static host of your choice.
-
-## 📝 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## ©️ Copyright
-
-© 2025 **Jordan T.** All rights reserved.
-
-You’re welcome to use this template for your own portfolio — just update `data.ts` and tweak the design as needed. Please keep attribution to the original author.
-
----
-
-## 🌟 Like it?
-
-If you found this helpful or inspiring, **please consider leaving a star** ⭐ on the repo — it helps others discover it too!
-
----
-
-## 🙏 Acknowledgments
-
-- [Astro](https://astro.build/)
-- [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Lucide Icons](https://lucide.dev/)
+Ce portfolio est dérivé du template [my-portfolio](https://github.com/rishikesh2003/my-portfolio) de Rishikesh S, dont l'attribution est conservée conformément à la licence MIT.

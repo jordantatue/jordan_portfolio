@@ -9,6 +9,21 @@ export const personalInfo = {
 
 export const workExperience = [
   {
+    company: "Groupe Zéphir",
+    location: "Châteaubriant, France",
+    position: "Développeur Full-Stack Java / Angular",
+    period: "Décembre 2025 – Présent",
+    logo: "logos/groupe-zephir.png",
+    achievements: [
+      "Contribution au projet SIROCCO, portail métier destiné aux agents et courtiers du groupe, développé en Java (Spring, CLEVA 14) et Angular.",
+      "Participation aux cycles de livraison complets : besoins métiers, conception technique, développement, déploiement et support utilisateurs.",
+      "Développement de fonctionnalités business (challenges commerciaux, mécanismes de bonus, tableaux de bord et indicateurs de performance) avec Oracle SQL et Hibernate.",
+      "Implémentation des règles de calcul métier et des workflows applicatifs, intégrés au système existant.",
+      "Rédaction et maintien de la documentation technique assurant la continuité Business → Tech → Ops → Users → Reporting.",
+      "Travail en environnement Windows et Linux, sur des plateformes Jenkins, Maven et WildFly, du stade recette à la production."
+    ],
+  },
+  {
     company: "Société Générale – Assurances",
     location: "Orléans / Remote",
     position: "Alternant Développeur Full-Stack & DevOps",
@@ -24,22 +39,6 @@ export const workExperience = [
       "Collaboration internationale avec des équipes en France et en Roumanie, documentation et passation de connaissances."
     ],
   },
-  {
-    company: "Groupe Zéphir",
-    location: "Châteaubriant, France",
-    position: "Développeur Full-Stack Java / Angular",
-    period: "Décembre 2025 – Présent",
-    logo: "logos/groupe-zephir.png",
-    achievements: [
-      "Contribution au projet SIROCCO, portail métier destiné aux agents et courtiers du groupe, développé en Java (Spring, CLEVA 14) et Angular.",
-      "Participation aux cycles de livraison complets : besoins métiers, conception technique, développement, déploiement et support utilisateurs.",
-      "Développement de fonctionnalités business (challenges commerciaux, mécanismes de bonus, tableaux de bord et indicateurs de performance) avec Oracle SQL et Hibernate.",
-      "Implémentation des règles de calcul métier et des workflows applicatifs, intégrés au système existant.",
-      "Rédaction et maintien de la documentation technique assurant la continuité Business → Tech → Ops → Users → Reporting.",
-      "Travail en environnement Windows et Linux, sur des plateformes Jenkins, Maven et WildFly, du stade recette à la production."
-    ],
-  },
-
   {
     company: "Enercity",
     location: "Hanovre, Allemagne",

@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import MotionWrapper from "./MotionWrapper";
 
 export default function HeroSection() {
+  const baseUrl = import.meta.env.BASE_URL ?? "/";
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -108,12 +111,17 @@ export default function HeroSection() {
           >
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <img
-                src="/jordan_portfolio/profile.jpg"
-                alt="Profile"
-                className="w-48 md:w-60 rounded-full relative ring-2 ring-purple-500/50"
-                style={{ objectFit: "cover" }}
-              />
+              <picture>
+                <source srcSet={`${normalizedBase}profile.webp`} type="image/webp" />
+                <img
+                  src={`${normalizedBase}profile.jpg`}
+                  alt="Portrait de Jordan Tatue"
+                  width={480}
+                  height={525}
+                  className="w-48 md:w-60 h-auto rounded-full relative ring-2 ring-purple-500/50"
+                  style={{ objectFit: "cover" }}
+                />
+              </picture>
             </div>
           </motion.div>
         </motion.div>
