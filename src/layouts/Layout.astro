@@ -1,15 +1,28 @@
 ---
 import "../styles/global.css";
+import GlassHeader from "@/components/GlassHeader";
+import PageNav from "@/components/PageNav";
+import Footer from "@/components/Footer";
+import { pages } from "@/lib/navigation";
+import { personalInfo } from "@/lib/data";
 
 interface Props {
-  title?: string;
-  description?: string;
+  /** Slug de la page courante, vide pour l'accueil. */
+  slug: string;
 }
 
-const {
-  title = "Jordan Tatue – Portfolio",
-  description = "Portfolio de Jordan Tatue, développeur Full-Stack & DevOps : parcours, compétences, projets et formation.",
-} = Astro.props;
+const { slug } = Astro.props;
+const page = pages.find((entry) => entry.slug === slug);
+
+if (!page) {
+  throw new Error(
+    `Slug inconnu : "${slug}". Ajoutez la page dans src/lib/navigation.ts.`,
+  );
+}
+
+const title = slug
+  ? `${page.title} – ${personalInfo.name}`
+  : `${personalInfo.name} – ${personalInfo.title}`;
 
 const baseUrl = import.meta.env.BASE_URL ?? "/";
 const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
@@ -22,7 +35,7 @@ const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href={`${normalizedBase}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+    <meta name="description" content={page.description} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,13 +45,21 @@ const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
     />
   </head>
   <body
-    class="min-h-screen bg-background font-sans antialiased selection:bg-purple-500/20 selection:text-purple-500"
+    class="min-h-screen bg-background font-sans antialiased selection:bg-brand-muted"
   >
     <div
-      class="fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="fixed inset-0 -z-10 bg-background bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,var(--brand-muted),transparent)]"
     >
     </div>
-    <slot />
+
+    <GlassHeader client:only="react" current={slug} />
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <PageNav client:only="react" current={slug} />
+    <Footer client:only="react" />
   </body>
 </html>
 
@@ -67,16 +88,6 @@ const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 </script>
 
 <style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    padding-top: 20px;
-    width: 100%;
-    height: 100%;
-    scroll-behavior: smooth;
-  }
-
   :root {
     --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }

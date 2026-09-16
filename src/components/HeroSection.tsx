@@ -1,12 +1,13 @@
 import { personalInfo, introduction } from "@/lib/data";
-import { Mail, Github, MapPin, Linkedin } from "lucide-react";
+import { Mail, Github, MapPin, Linkedin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { pages, hrefFor } from "@/lib/navigation";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
   },
 };
 
@@ -18,6 +19,14 @@ const childVariants = {
 /** Domaines mis en avant sous le titre, dans l'ordre du positionnement. */
 const focusAreas = ["DevOps & Cloud", "Machine Learning", "Java · Python", "CI/CD"];
 
+/** Accroche de chaque page, affichee sur les raccourcis de l'accueil. */
+const shortcutLead: Record<string, string> = {
+  experience: "Groupe Zéphir, Société Générale, Enercity",
+  projects: "Modèle servi et supervisé, interface LLM",
+  skills: "DevOps, cloud, IA, back-end et front-end",
+  education: "Ingénieur 3iL (CTI), Master 2 à Hanovre",
+};
+
 export default function HeroSection() {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
@@ -28,8 +37,10 @@ export default function HeroSection() {
     { icon: Linkedin, label: "LinkedIn", href: personalInfo.linkedin, external: true },
   ];
 
+  const shortcuts = pages.filter((page) => page.slug);
+
   return (
-    <section className="pt-24 pb-10 md:pt-28 md:pb-12">
+    <section className="py-12 md:py-16">
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <motion.div
           className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between md:gap-12"
@@ -91,6 +102,10 @@ export default function HeroSection() {
           </div>
 
           <motion.div className="flex justify-center shrink-0" variants={childVariants}>
+            {/*
+              L'image fait 480x525 : rounded-full sur ce rapport donne un
+              ovale vertical, sans recadrer le portrait.
+            */}
             <picture>
               <source srcSet={`${normalizedBase}profile.webp`} type="image/webp" />
               <img
@@ -98,7 +113,7 @@ export default function HeroSection() {
                 alt="Portrait de Jordan Tatue"
                 width={480}
                 height={525}
-                className="w-40 md:w-52 h-auto rounded-2xl object-cover ring-1 ring-brand-border"
+                className="w-40 md:w-52 h-auto rounded-full object-cover ring-2 ring-brand-border"
               />
             </picture>
           </motion.div>
@@ -108,7 +123,7 @@ export default function HeroSection() {
           className="mt-8 border-l-2 border-brand pl-6 space-y-3"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
         >
           {introduction.map((paragraph) => (
             <p
@@ -119,6 +134,35 @@ export default function HeroSection() {
             </p>
           ))}
         </motion.div>
+
+        <motion.nav
+          className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2"
+          aria-label="Parcourir le portfolio"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          {shortcuts.map(({ slug, label }) => (
+            <a
+              key={slug}
+              href={hrefFor(slug, baseUrl)}
+              className="group flex items-center justify-between gap-3 rounded-lg border border-border/60 p-4 hover:border-brand-border hover:bg-brand-muted transition-colors"
+            >
+              <span className="min-w-0">
+                <span className="block font-medium group-hover:text-brand transition-colors">
+                  {label}
+                </span>
+                <span className="block text-xs text-muted-foreground truncate">
+                  {shortcutLead[slug]}
+                </span>
+              </span>
+              <ArrowRight
+                className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-brand group-hover:translate-x-0.5 transition-all"
+                aria-hidden="true"
+              />
+            </a>
+          ))}
+        </motion.nav>
       </div>
     </section>
   );
