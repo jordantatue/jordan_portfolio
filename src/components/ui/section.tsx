@@ -23,10 +23,10 @@ export default function Section({
   children,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-16 md:py-20", className)}>
+    <section id={id} className={cn("py-10 md:py-12", className)}>
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <MotionWrapper>
-          <header className="mb-10">
+          <header className="mb-7">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
               {title}
             </h2>

@@ -57,7 +57,7 @@ export default function ProjectsSection() {
       </div>
 
       <MotionWrapper delay={0.2}>
-        <div className="mt-12">
+        <div className="mt-10">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
             Projets de formation
           </h3>
@@ -89,7 +89,7 @@ export default function ProjectsSection() {
             href={`${personalInfo.github}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center text-sm font-medium hover:text-brand transition-colors"
+            className="mt-6 inline-flex items-center text-sm font-medium hover:text-brand transition-colors"
             whileHover={{ x: 2 }}
           >
             <Github className="h-4 w-4 mr-2" aria-hidden="true" />

@@ -179,7 +179,10 @@ export const certifications = [
   { name: "TOEIC" },
 ];
 
-export const languages = ["Français (natif)", "Anglais (professionnel)"];
+export const languages = [
+  { name: "Français", level: "Langue maternelle" },
+  { name: "Anglais", level: "Professionnel" },
+];
 
 /** Projets mis en avant : ceux qui portent le positionnement DevOps & IA. */
 export const featuredProjects = [

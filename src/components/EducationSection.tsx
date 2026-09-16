@@ -2,6 +2,7 @@ import { education, certifications, languages } from "@/lib/data";
 import TimelineItem from "./TimelineItem";
 import Section from "./ui/section";
 import { GlassCard } from "./ui/glass-card";
+import { BadgeCheck, Languages as LanguagesIcon } from "lucide-react";
 import MotionWrapper from "./MotionWrapper";
 
 export default function EducationSection() {
@@ -32,16 +33,21 @@ export default function EducationSection() {
       ))}
 
       <MotionWrapper delay={0.12}>
-        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
           <GlassCard className="p-5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-              Certifications
-            </h3>
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-muted text-brand">
+                <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <h3 className="text-sm font-semibold tracking-tight">
+                Certifications
+              </h3>
+            </div>
             <ul className="flex flex-wrap gap-2">
               {certifications.map((cert) => (
                 <li
                   key={cert.name}
-                  className="rounded-md border border-border/60 bg-background/60 px-2.5 py-1 text-sm"
+                  className="rounded-md border border-border/60 bg-background/70 px-2.5 py-1 text-sm"
                 >
                   {cert.name}
                 </li>
@@ -50,13 +56,22 @@ export default function EducationSection() {
           </GlassCard>
 
           <GlassCard className="p-5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-              Langues
-            </h3>
-            <ul className="space-y-1.5">
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-muted text-brand">
+                <LanguagesIcon className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <h3 className="text-sm font-semibold tracking-tight">Langues</h3>
+            </div>
+            <ul className="space-y-2">
               {languages.map((lang) => (
-                <li key={lang} className="text-sm text-muted-foreground">
-                  {lang}
+                <li
+                  key={lang.name}
+                  className="flex items-center justify-between gap-3 rounded-md border border-border/60 bg-background/70 px-3 py-2"
+                >
+                  <span className="text-sm font-medium">{lang.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {lang.level}
+                  </span>
                 </li>
               ))}
             </ul>

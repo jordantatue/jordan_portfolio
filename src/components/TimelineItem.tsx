@@ -36,7 +36,7 @@ export default function TimelineItem({
         {!isLast && <div className="w-px grow bg-border" />}
       </div>
 
-      <div className={cn("min-w-0", isLast ? "pb-0" : "pb-10")}>
+      <div className={cn("min-w-0", isLast ? "pb-0" : "pb-8")}>
         <div className={resolvedLogoSrc ? "flex items-start gap-4" : undefined}>
           {resolvedLogoSrc && (
             <div className="h-12 w-12 shrink-0 rounded-md border border-border/60 bg-white p-1.5 flex items-center justify-center overflow-hidden">

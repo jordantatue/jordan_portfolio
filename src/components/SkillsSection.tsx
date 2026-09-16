@@ -1,11 +1,23 @@
 import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
+import {
+  Cloud,
+  Brain,
+  GitBranch,
+  Activity,
+  Code2,
+  Server,
+  MonitorSmartphone,
+  Database,
+  Users,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Section from "./ui/section";
 import { GlassCard } from "./ui/glass-card";
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
 };
 
 const cardVariants = {
@@ -20,17 +32,20 @@ const cardVariants = {
 const skillCategories: Array<{
   key: keyof typeof skills;
   label: string;
+  icon: LucideIcon;
   highlight?: boolean;
+  /** Occupe les deux colonnes pour fermer la grille sans ligne orpheline. */
+  wide?: boolean;
 }> = [
-  { key: "devopsCloud", label: "DevOps & Cloud", highlight: true },
-  { key: "aiData", label: "IA & Data", highlight: true },
-  { key: "cicd", label: "CI/CD & qualité" },
-  { key: "observability", label: "Observabilité" },
-  { key: "programmingLanguages", label: "Langages" },
-  { key: "backend", label: "Back-end" },
-  { key: "frontend", label: "Front-end" },
-  { key: "databases", label: "Données & traitement" },
-  { key: "methodology", label: "Méthodologies" },
+  { key: "devopsCloud", label: "DevOps & Cloud", icon: Cloud, highlight: true },
+  { key: "aiData", label: "IA & Data", icon: Brain, highlight: true },
+  { key: "cicd", label: "CI/CD & qualité", icon: GitBranch },
+  { key: "observability", label: "Observabilité", icon: Activity },
+  { key: "programmingLanguages", label: "Langages", icon: Code2 },
+  { key: "backend", label: "Back-end", icon: Server },
+  { key: "frontend", label: "Front-end", icon: MonitorSmartphone },
+  { key: "databases", label: "Données & traitement", icon: Database },
+  { key: "methodology", label: "Méthodologies", icon: Users, wide: true },
 ];
 
 export default function SkillsSection() {
@@ -46,31 +61,42 @@ export default function SkillsSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.05 }}
       >
-        {skillCategories.map((category) => {
-          const items = skills[category.key];
+        {skillCategories.map(({ key, label, icon: Icon, highlight, wide }) => {
+          const items = skills[key];
           if (!items || items.length === 0) return null;
 
           return (
             <motion.div
-              key={category.key}
+              key={key}
               variants={cardVariants}
-              className={category.highlight ? "md:col-span-1" : undefined}
+              className={wide ? "md:col-span-2" : undefined}
             >
               <GlassCard
                 className={`h-full p-5 ${
-                  category.highlight ? "border-brand-border bg-brand-muted" : ""
+                  highlight ? "border-brand-border bg-brand-muted" : ""
                 }`}
               >
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                  {category.label}
-                </h3>
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${
+                      highlight
+                        ? "bg-brand text-background"
+                        : "bg-brand-muted text-brand"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-sm font-semibold tracking-tight">
+                    {label}
+                  </h3>
+                </div>
                 <ul className="flex flex-wrap gap-2">
                   {items.map((skill) => (
                     <li
                       key={skill}
-                      className="rounded-md border border-border/60 bg-background/60 px-2.5 py-1 text-sm"
+                      className="rounded-md border border-border/60 bg-background/70 px-2.5 py-1 text-sm"
                     >
                       {skill}
                     </li>

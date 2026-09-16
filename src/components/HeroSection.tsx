@@ -29,7 +29,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-20">
+    <section className="pt-24 pb-10 md:pt-28 md:pb-12">
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <motion.div
           className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between md:gap-12"
@@ -105,7 +105,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="mt-12 border-l-2 border-brand pl-6 space-y-4"
+          className="mt-8 border-l-2 border-brand pl-6 space-y-3"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
