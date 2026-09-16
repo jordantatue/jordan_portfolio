@@ -1,133 +1,68 @@
-import { education } from "@/lib/data";
+import { education, certifications, languages } from "@/lib/data";
 import TimelineItem from "./TimelineItem";
-import { Award } from "lucide-react";
+import Section from "./ui/section";
+import { GlassCard } from "./ui/glass-card";
 import MotionWrapper from "./MotionWrapper";
-import { motion } from "framer-motion";
-import { certifications, languages } from "@/lib/data";
 
 export default function EducationSection() {
   return (
-    <section
-      id="education"
-      className="py-12 bg-gradient-to-b from-muted/10 to-background"
-      style={{ paddingTop: "100px" }}
-    >
-      <div className="container max-w-4xl mx-auto px-6 md:px-4">
-        <MotionWrapper>
-          <h2 className="text-2xl font-bold mb-8 text-center md:text-left">
-            🎓 Formation
-          </h2>
-        </MotionWrapper>
-
-        <div className="mb-8">
-          {education.map((edu, index) => (
-            <TimelineItem
-              key={edu.institution}
-              title={edu.degree}
-              subtitle={edu.institution}
-              date={edu.period}
-              logoSrc={edu.logo}
-              logoAlt={`Logo ${edu.institution}`}
-              isLast={index === education.length - 1}
-              index={index}
-            >
-              <p className="text-sm text-muted-foreground mb-3">
-                📍 {edu.location}
-              </p>
-
-              {edu.achievements && edu.achievements.length > 0 && (
-                <motion.div
-                  className="mt-3 p-4 bg-background/80 backdrop-blur-sm backdrop-filter rounded-lg border border-purple-500/20 dark:bg-card/10 dark:border-purple-500/10 shadow-sm"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
+    <Section id="education" title="Formation" className="bg-muted/20">
+      {education.map((edu, index) => (
+        <MotionWrapper key={edu.institution} delay={index * 0.08}>
+          <TimelineItem
+            title={edu.degree}
+            subtitle={`${edu.institution} · ${edu.location}`}
+            date={edu.period}
+            logoSrc={edu.logo}
+            logoAlt={`Logo ${edu.institution}`}
+            isLast={index === education.length - 1}
+          >
+            <ul className="mt-4 space-y-2.5">
+              {edu.achievements.map((achievement) => (
+                <li
+                  key={achievement.slice(0, 32)}
+                  className="relative pl-4 text-sm text-muted-foreground leading-relaxed before:absolute before:left-0 before:top-2.5 before:h-1 before:w-1 before:rounded-full before:bg-brand"
                 >
-                  <div className="flex items-center mb-3">
-                    <div className="h-6 w-6 flex items-center justify-center rounded-full bg-purple-500/10 mr-2">
-                      <Award className="h-4 w-4 text-purple-500" />
-                    </div>
-                    <h4 className="text-sm font-medium">
-                      ✨ Réalisations & activités
-                    </h4>
-                  </div>
-                  <ul className="list-none ml-4 space-y-2 text-sm">
-                    {edu.achievements.map((achievement, i) => (
-                      <motion.li
-                        key={i}
-                        className="text-muted-foreground relative pl-6"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.1 * i }}
-                        viewport={{ once: true }}
-                      >
-                        {achievement}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </TimelineItem>
-          ))}
-          {(certifications.length > 0 || languages.length > 0) && (
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {certifications.length > 0 && (
-                <div className="text-left">
-                  <TimelineItem
-                    key="certifications"
-                    title="📜 Certifications"
-                    subtitle=""
-                    date=""
-                    isLast={true}
-                    index={education.length}
-                  >
-                    <ul className="list-disc ml-8 space-y-2 text-sm text-muted-foreground">
-                      {certifications.map((cert, i) => (
-                        <motion.li
-                          key={cert.name}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: 0.1 * i }}
-                          viewport={{ once: true }}
-                        >
-                          {cert.name}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </TimelineItem>
-                </div>
-              )}
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+          </TimelineItem>
+        </MotionWrapper>
+      ))}
 
-              {languages.length > 0 && (
-                <div className="text-left">
-                  <TimelineItem
-                    key="languages"
-                    title="🌐 Langues"
-                    subtitle=""
-                    date=""
-                    isLast={true}
-                    index={education.length + 1}
-                  >
-                    <ul className="list-disc ml-5 list-inside space-y-2 text-sm text-muted-foreground">
-                      {languages.map((lang, i) => (
-                        <motion.li
-                          key={lang}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: 0.1 * i }}
-                          viewport={{ once: true }}
-                        >
-                          {lang}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </TimelineItem>
-                </div>
-              )}
-            </div>
-          )}
+      <MotionWrapper delay={0.12}>
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <GlassCard className="p-5">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+              Certifications
+            </h3>
+            <ul className="flex flex-wrap gap-2">
+              {certifications.map((cert) => (
+                <li
+                  key={cert.name}
+                  className="rounded-md border border-border/60 bg-background/60 px-2.5 py-1 text-sm"
+                >
+                  {cert.name}
+                </li>
+              ))}
+            </ul>
+          </GlassCard>
+
+          <GlassCard className="p-5">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+              Langues
+            </h3>
+            <ul className="space-y-1.5">
+              {languages.map((lang) => (
+                <li key={lang} className="text-sm text-muted-foreground">
+                  {lang}
+                </li>
+              ))}
+            </ul>
+          </GlassCard>
         </div>
-      </div>
-    </section>
+      </MotionWrapper>
+    </Section>
   );
 }

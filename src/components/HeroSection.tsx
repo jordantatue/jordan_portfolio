@@ -1,155 +1,124 @@
-import { personalInfo } from "@/lib/data";
+import { personalInfo, introduction } from "@/lib/data";
 import { Mail, Github, MapPin, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
-import MotionWrapper from "./MotionWrapper";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+/** Domaines mis en avant sous le titre, dans l'ordre du positionnement. */
+const focusAreas = ["DevOps & Cloud", "Machine Learning", "Java · Python", "CI/CD"];
 
 export default function HeroSection() {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+  const contactLinks = [
+    { icon: Mail, label: personalInfo.email, href: `mailto:${personalInfo.email}` },
+    { icon: Github, label: "GitHub", href: personalInfo.github, external: true },
+    { icon: Linkedin, label: "LinkedIn", href: personalInfo.linkedin, external: true },
+  ];
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      <div className="container max-w-4xl mx-auto px-6 md:px-4 relative z-10">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-20">
+      <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <motion.div
-          className="flex flex-col md:flex-row md:items-center justify-between mb-8"
+          className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between md:gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <div className="text-center md:text-left">
             <motion.h1
-              className="text-4xl font-bold mb-2"
+              className="text-3xl md:text-5xl font-semibold tracking-tight"
               variants={childVariants}
             >
-              {personalInfo.name}{" "}
-              <span className="inline-block animate-pulse"></span>
+              {personalInfo.name}
             </motion.h1>
 
             <motion.p
-              className="text-xl text-muted-foreground mb-6"
+              className="mt-3 text-lg md:text-xl text-brand font-medium"
               variants={childVariants}
             >
-              Ingénieur DevOps | IA | Full-Stack 👨‍💻
+              {personalInfo.title}
             </motion.p>
 
-            <motion.div
-              className="flex flex-col gap-2 items-center md:items-start"
-              variants={containerVariants}
+            <motion.ul
+              className="mt-5 flex flex-wrap gap-2 justify-center md:justify-start"
+              variants={childVariants}
             >
-              <motion.div
-                className="flex items-center text-sm text-muted-foreground"
-                variants={childVariants}
-                whileHover={{ scale: 1.05, color: "#4b5563" }}
-              >
-                <MapPin className="h-4 w-4 mr-2" />
+              {focusAreas.map((area) => (
+                <li
+                  key={area}
+                  className="rounded-full border border-brand-border bg-brand-muted px-3 py-1 text-xs font-medium"
+                >
+                  {area}
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center md:justify-start text-sm text-muted-foreground"
+              variants={childVariants}
+            >
+              <span className="flex items-center">
+                <MapPin className="h-4 w-4 mr-1.5" aria-hidden="true" />
                 {personalInfo.location}
-              </motion.div>
-
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-                variants={childVariants}
-                whileHover={{ scale: 1.05, color: "#4b5563" }}
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                {personalInfo.email}
-              </motion.a>
-
-              <motion.a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-                variants={childVariants}
-                whileHover={{ scale: 1.05, color: "#4b5563" }}
-              >
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-              </motion.a>
-
-              <motion.a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-                variants={childVariants}
-                whileHover={{ scale: 1.05, color: "#4b5563" }}
-              >
-                <Linkedin className="h-4 w-4 mr-2" />
-                LinkedIn
-              </motion.a>
+              </span>
+              {contactLinks.map(({ icon: Icon, label, href, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="flex items-center hover:text-brand transition-colors"
+                >
+                  <Icon className="h-4 w-4 mr-1.5" aria-hidden="true" />
+                  {label}
+                </a>
+              ))}
             </motion.div>
           </div>
 
-          <motion.div
-            className="mt-6 md:mt-0 flex justify-center"
-            variants={childVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <picture>
-                <source srcSet={`${normalizedBase}profile.webp`} type="image/webp" />
-                <img
-                  src={`${normalizedBase}profile.jpg`}
-                  alt="Portrait de Jordan Tatue"
-                  width={480}
-                  height={525}
-                  className="w-48 md:w-60 h-auto rounded-full relative ring-2 ring-purple-500/50"
-                  style={{ objectFit: "cover" }}
-                />
-              </picture>
-            </div>
+          <motion.div className="flex justify-center shrink-0" variants={childVariants}>
+            <picture>
+              <source srcSet={`${normalizedBase}profile.webp`} type="image/webp" />
+              <img
+                src={`${normalizedBase}profile.jpg`}
+                alt="Portrait de Jordan Tatue"
+                width={480}
+                height={525}
+                className="w-40 md:w-52 h-auto rounded-2xl object-cover ring-1 ring-brand-border"
+              />
+            </picture>
           </motion.div>
         </motion.div>
 
-        <MotionWrapper>
-          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-purple-500/20 dark:border-purple-500/10 shadow-sm">
-            <p className="text-muted-foreground pl-4 py-2 mb-4 relative">
-              <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
-              👋 Bonjour, je m’appelle <strong>Jordan Tatue</strong>.
-              <br />
-              <br />
-              Curieux, persévérant et animé par le goût du travail bien fait,
-              j’aime comprendre, apprendre et construire des solutions utiles.
-              J’accorde une grande importance à la rigueur, à la clarté et à la
-              collaboration.
-              <br />
-              <br />
-              Mon parcours m’a permis d’évoluer dans des environnements
-              exigeants, de gagner en autonomie et de développer une vraie
-              capacité d’adaptation, aussi bien en équipe qu’en responsabilité
-              individuelle.
-              <br />
-              <br />
-              👉 Ce portfolio reflète mon parcours, mes réalisations et ma
-              manière de travailler. Je te laisse le découvrir.
+        <motion.div
+          className="mt-12 border-l-2 border-brand pl-6 space-y-4"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          {introduction.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 32)}
+              className="text-sm md:text-base text-muted-foreground leading-relaxed"
+            >
+              {paragraph}
             </p>
-          </div>
-        </MotionWrapper>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

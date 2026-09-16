@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { MotionProps } from "framer-motion";
 
 interface MotionWrapperProps extends MotionProps {
@@ -7,32 +7,30 @@ interface MotionWrapperProps extends MotionProps {
   delay?: number;
 }
 
-// Default animations for sections
-const defaultAnimations = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: delay,
-      ease: "easeOut",
-    },
-  }),
-};
-
+/**
+ * Revele son contenu a l'entree dans le viewport.
+ *
+ * Deux garde-fous : l'animation ne se joue qu'une fois (le contenu ne
+ * redevient jamais invisible si l'on remonte la page), et elle est
+ * neutralisee quand le systeme demande des animations reduites.
+ */
 export default function MotionWrapper({
   children,
   delay = 0,
   ...props
 }: MotionWrapperProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div>{children}</div>;
+  }
+
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={defaultAnimations}
-      custom={delay}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.15 }}
       {...props}
     >
       {children}

@@ -1,144 +1,86 @@
-import React from "react";
 import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
-import MotionWrapper from "./MotionWrapper";
+import Section from "./ui/section";
 import { GlassCard } from "./ui/glass-card";
-
-function SkillTag({ skill, index }: { skill: string; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 0.05 * index,
-      }}
-      whileHover={{ scale: 1.05, y: -2 }}
-      className="px-3 py-1 bg-muted/80 backdrop-blur-sm rounded-md text-sm border border-purple-500/10 shadow-sm"
-    >
-      {skill}
-    </motion.div>
-  );
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
-const skillCategoryVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
+/**
+ * Ordre volontaire : l'infrastructure et l'IA en premier, le developpement
+ * applicatif ensuite. Les deux premieres categories sont mises en avant.
+ */
 const skillCategories: Array<{
   key: keyof typeof skills;
   label: string;
+  highlight?: boolean;
 }> = [
-  {
-    key: "programmingLanguages",
-    label: "Langages de programmation",
-  },
-  {
-    key: "frameworks",
-    label: "Frameworks",
-  },
-  {
-    key: "frontend",
-    label: "Développement front-end",
-  },
-  {
-    key: "backend",
-    label: "Développement back-end",
-  },
-  {
-    key: "databases",
-    label: "Bases de données",
-  },
-  {
-    key: "cloud",
-    label: "Cloud",
-  },
-  {
-    key: "cicd",
-    label: "CI/CD",
-  },
-  {
-    key: "containerizationAndOrchestration",
-    label: "Conteneurs & orchestration",
-  },
-  {
-    key: "monitoringAndSecurity",
-    label: "Monitoring & sécurité",
-  },
-  {
-    key: "dataAndAI",
-    label: "Data & IA",
-  },
-  {
-    key: "methodologyAndModeling",
-    label: "Méthodologies & modélisation",
-  },
+  { key: "devopsCloud", label: "DevOps & Cloud", highlight: true },
+  { key: "aiData", label: "IA & Data", highlight: true },
+  { key: "cicd", label: "CI/CD & qualité" },
+  { key: "observability", label: "Observabilité" },
+  { key: "programmingLanguages", label: "Langages" },
+  { key: "backend", label: "Back-end" },
+  { key: "frontend", label: "Front-end" },
+  { key: "databases", label: "Données & traitement" },
+  { key: "methodology", label: "Méthodologies" },
 ];
 
 export default function SkillsSection() {
   return (
-    <section
+    <Section
       id="skills"
-      className="py-12 bg-gradient-to-b from-background to-muted/20"
-      style={{ paddingTop: "100px" }}
-
+      title="Compétences"
+      lead="Les technologies que j’utilise en production, de l’infrastructure au modèle servi."
+      className="bg-muted/20"
     >
-      <div className="container max-w-4xl mx-auto px-6 md:px-4">
-        <MotionWrapper>
-          <h2 className="text-2xl font-bold mb-8 text-center md:text-left">
-            🛠️ Compétences
-          </h2>
-        </MotionWrapper>
+      <motion.div
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        {skillCategories.map((category) => {
+          const items = skills[category.key];
+          if (!items || items.length === 0) return null;
 
-        <motion.div
-          className="grid grid-cols-1 gap-6 md:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {skillCategories.map((category) => {
-            const items = skills[category.key];
-            if (!items || items.length === 0) {
-              return null;
-            }
-
-            return (
-              <motion.div key={category.key} variants={skillCategoryVariants}>
-                <GlassCard className="p-4">
-                  <h3 className="text-lg font-medium mb-3 text-center md:text-left">
-                    {category.label}
-                  </h3>
-                  <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                    {items.map((skill, index) => (
-                      <SkillTag key={skill} skill={skill} index={index} />
-                    ))}
-                  </div>
-                </GlassCard>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
+          return (
+            <motion.div
+              key={category.key}
+              variants={cardVariants}
+              className={category.highlight ? "md:col-span-1" : undefined}
+            >
+              <GlassCard
+                className={`h-full p-5 ${
+                  category.highlight ? "border-brand-border bg-brand-muted" : ""
+                }`}
+              >
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                  {category.label}
+                </h3>
+                <ul className="flex flex-wrap gap-2">
+                  {items.map((skill) => (
+                    <li
+                      key={skill}
+                      className="rounded-md border border-border/60 bg-background/60 px-2.5 py-1 text-sm"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

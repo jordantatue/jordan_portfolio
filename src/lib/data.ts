@@ -1,11 +1,18 @@
 export const personalInfo = {
   name: "Jordan Tatue",
+  title: "Ingénieur DevOps & IA · Développeur Full-Stack",
   location: "Paris, France",
   email: "tatuejordan@gmail.com",
   github: "https://github.com/jordantatue",
   linkedin: "https://www.linkedin.com/in/tatuejordan/",
-  portfolio: "https://jordantatue.github.io/site_personnel/",
 };
+
+/** Paragraphes de présentation affichés dans la section d'en-tête. */
+export const introduction = [
+  "Ingénieur diplômé (CTI) en développement, intelligence artificielle et DevOps. Je conçois des applications métier de bout en bout — du besoin fonctionnel à la mise en production — et j’automatise ce qui doit l’être : pipelines CI/CD, déploiements, migrations d’infrastructure.",
+  "Deux ans d’alternance à la Société Générale – Assurances m’ont formé aux environnements exigeants : développement Python, Java et PHP, automatisation Ansible, pipelines GitLab CI et Jenkins, migrations CentOS vers Red Hat et Cloud Gen1 vers Gen2. Je travaille aujourd’hui chez Groupe Zéphir sur SIROCCO, portail métier Java/Angular destiné aux agents et courtiers du groupe.",
+  "Côté IA, un Master 2 Machine Learning & Data à Hanovre et des réalisations concrètes : une API de prédiction servie avec FastAPI, conteneurisée et supervisée sous Prometheus et Grafana, ainsi qu’une extension navigateur adossée à des LLM.",
+];
 
 export const workExperience = [
   {
@@ -15,41 +22,39 @@ export const workExperience = [
     period: "Décembre 2025 – Présent",
     logo: "logos/groupe-zephir.png",
     achievements: [
-      "Contribution au projet SIROCCO, portail métier destiné aux agents et courtiers du groupe, développé en Java (Spring, CLEVA 14) et Angular.",
-      "Participation aux cycles de livraison complets : besoins métiers, conception technique, développement, déploiement et support utilisateurs.",
-      "Développement de fonctionnalités business (challenges commerciaux, mécanismes de bonus, tableaux de bord et indicateurs de performance) avec Oracle SQL et Hibernate.",
-      "Implémentation des règles de calcul métier et des workflows applicatifs, intégrés au système existant.",
-      "Rédaction et maintien de la documentation technique assurant la continuité Business → Tech → Ops → Users → Reporting.",
-      "Travail en environnement Windows et Linux, sur des plateformes Jenkins, Maven et WildFly, du stade recette à la production."
+      "Développement de SIROCCO, portail métier utilisé par les agents et courtiers du groupe, en Java (Spring, CLEVA 14) et Angular.",
+      "Conception des fonctionnalités commerciales — challenges, mécanismes de bonus, tableaux de bord et indicateurs de performance — jusqu’aux règles de calcul métier, sur Oracle SQL et Hibernate.",
+      "Prise en charge du cycle de livraison complet : cadrage du besoin, conception technique, développement, déploiement en recette puis en production, et support utilisateurs.",
+      "Exploitation de la chaîne Jenkins, Maven et WildFly en environnements Windows et Linux.",
+      "Documentation technique garantissant la continuité entre métier, développement, exploitation et reporting.",
     ],
   },
   {
     company: "Société Générale – Assurances",
-    location: "Orléans / Remote",
+    location: "Orléans / Télétravail",
     position: "Alternant Développeur Full-Stack & DevOps",
     period: "Septembre 2023 – Septembre 2025",
     logo: "logos/societe-generale.jpg",
     achievements: [
-      "Développement et maintenance d’applications internes pour la gestion des plannings, réservations, incidents et authentification.",
-      "Conception de modules métiers Full Stack en Python/Django, Java/Spring et PHP/Symfony.",
-      "Centralisation et supervision de traitements applicatifs via interfaces web dédiées.",
-      "Automatisation des déploiements, migrations et tâches récurrentes via scripts Python/Bash et playbooks Ansible.",
-      "Mise en place et exploitation de pipelines CI/CD (GitLab CI, Jenkins, Docker, GitHub Actions).",
-      "Participation aux migrations d’infrastructure : CentOS → Red Hat et Cloud Gen1 → Gen2 (AWS, Azure, GCP).",
-      "Collaboration internationale avec des équipes en France et en Roumanie, documentation et passation de connaissances."
+      "Industrialisation des déploiements, migrations et tâches récurrentes par scripts Python et Bash et playbooks Ansible, supprimant des interventions manuelles répétées.",
+      "Construction et exploitation de pipelines CI/CD sous GitLab CI, Jenkins, Docker et GitHub Actions.",
+      "Conduite de migrations d’infrastructure de CentOS vers Red Hat et du Cloud Gen1 vers Gen2, sur AWS, Azure et GCP.",
+      "Développement d’applications internes de gestion des plannings, réservations, incidents et authentification, en Python/Django, Java/Spring et PHP/Symfony.",
+      "Centralisation et supervision des traitements applicatifs derrière des interfaces web dédiées, donnant aux équipes une vue unifiée de l’exécution.",
+      "Collaboration avec des équipes en France et en Roumanie : documentation et passation de connaissances.",
     ],
   },
   {
     company: "Enercity",
     location: "Hanovre, Allemagne",
-    position: "Participant – Hackathon Data Science",
+    position: "Hackathon Data Science",
     period: "Novembre 2024",
     logo: "logos/enercity.png",
     achievements: [
-      "Conception d’un modèle de prédiction de la consommation énergétique par régression linéaire et modèles avancés (Python, pandas, scikit-learn, XGBoost, TensorFlow).",
-      "Préparation et analyse des données : nettoyage, normalisation, gestion des valeurs manquantes et exploration statistique.",
-      "Évaluation et optimisation des performances des modèles à l’aide de métriques adaptées.",
-      "Présentation des résultats sous forme de visualisations et d’un rapport technique destiné aux équipes métier."
+      "Modélisation de la consommation énergétique, de la régression linéaire aux modèles à gradient boosté et réseaux de neurones (Python, pandas, scikit-learn, XGBoost, TensorFlow).",
+      "Préparation des données : nettoyage, normalisation, traitement des valeurs manquantes et exploration statistique.",
+      "Évaluation et optimisation des modèles sur des métriques adaptées au problème.",
+      "Restitution des résultats aux équipes métier sous forme de visualisations et d’un rapport technique.",
     ],
   },
 ];
@@ -63,7 +68,7 @@ export const education = [
     logo: "logos/3il.svg",
     achievements: [
       "Formation en développement logiciel, intelligence artificielle, DevOps et cloud.",
-      "Projets académiques et industriels en environnement agile (Scrum, SAFe)."
+      "Projets académiques et industriels conduits en agile (Scrum, SAFe).",
     ],
   },
   {
@@ -74,25 +79,25 @@ export const education = [
     logo: "logos/hsh.svg",
     achievements: [
       "Spécialisation en machine learning, data science et infrastructures cloud.",
-      "Projets de modélisation prédictive et déploiement de modèles."
+      "Projets de modélisation prédictive et de déploiement de modèles.",
     ],
   },
 ];
 
+/**
+ * Competences, ordonnees pour un profil DevOps & IA : l'infrastructure et
+ * l'IA d'abord, le developpement applicatif ensuite.
+ */
 export const skills = {
-  methodologyAndModeling: [
-    "DDD",
-    "SCRUM",
-    "SAFe",
-    "Kanban",
-    "JIRA",
-    "Confluence"
-  ],
-
-  cloud: [
+  devopsCloud: [
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Ansible",
     "AWS",
+    "Azure",
     "GCP",
-    "Azure"
+    "Linux (RHEL)",
   ],
 
   cicd: [
@@ -100,74 +105,70 @@ export const skills = {
     "Jenkins",
     "GitHub Actions",
     "SonarQube",
-    "Terraform"
+    "Maven",
   ],
 
-  containerizationAndOrchestration: [
-    "Docker",
-    "Kubernetes"
-  ],
-
-  monitoringAndSecurity: [
+  observability: [
     "Prometheus",
     "Grafana",
-    "Kafka",
     "ELK",
-    "OpenID"
   ],
 
-  dataAndAI: [
-    "Machine Learning",
-    "Deep Learning",
+  aiData: [
+    "scikit-learn",
+    "XGBoost",
+    "TensorFlow",
+    "pandas",
+    "LLMs",
+    "RAG",
+    "OCR",
     "Classification",
     "Clustering",
-    "LLMs",
-    "OCR (Data Extraction)",
-    "RAG"
-  ],
-
-  frameworks: [
-    "React.js",
-    "Angular",
-    "Node.js",
-    "Django",
-    "Spring Boot"
   ],
 
   programmingLanguages: [
     "Python",
     "Java",
-    "JavaScript",
-    "C",
-    "C++",
     "Go",
-    "Bash"
-  ],
-
-  frontend: [
-    "React.js",
-    "Angular",
     "JavaScript",
-    "UX"
+    "Bash",
+    "SQL",
+    "C / C++",
   ],
 
   backend: [
-    "Node.js",
+    "Spring Boot",
     "Django",
-    "Spring Boot"
+    "FastAPI",
+    "Node.js",
+    "Hibernate",
+    "OpenID Connect",
+  ],
+
+  frontend: [
+    "React",
+    "Angular",
   ],
 
   databases: [
     "PostgreSQL",
-    "MySQL",
     "Oracle",
+    "MySQL",
     "MongoDB",
-    "NoSQL",
     "BigQuery",
-    "Apache Spark"
-  ]
-};
+    "Apache Spark",
+    "Kafka",
+  ],
 
+  methodology: [
+    "Scrum",
+    "SAFe",
+    "Kanban",
+    "DDD",
+    "Jira",
+    "Confluence",
+  ],
+};
 
 export const certifications = [
   { name: "Certification Python" },
@@ -178,77 +179,52 @@ export const certifications = [
   { name: "TOEIC" },
 ];
 
-export const languages = [
-  "Français (natif)",
-  "Anglais (professionnel)"
-];
+export const languages = ["Français (natif)", "Anglais (professionnel)"];
 
-export const strengths = [
-  "Autonomie et sens des responsabilités",
-  "Polyvalence et adaptabilité",
-  "Capacité à évoluer dans des environnements complexes",
-  "Esprit d’équipe et transmission des connaissances"
-];
-
-export const projects = [
+/** Projets mis en avant : ceux qui portent le positionnement DevOps & IA. */
+export const featuredProjects = [
   {
-    title: "House Price Prediction – API de prédiction ML",
+    title: "API de prédiction immobilière",
     github: "https://github.com/jordantatue/House_Price_Prediction",
-    video: "",
+    tags: ["Python", "scikit-learn", "FastAPI", "Docker", "Prometheus", "Grafana"],
     description: [
-      "Développement d’une API REST de prédiction du prix des maisons basée sur un modèle RandomForest.",
-      "Pipeline complet de machine learning : entraînement, évaluation et sérialisation du modèle (Python, scikit-learn, pandas).",
-      "Exposition des prédictions via FastAPI et Uvicorn, avec endpoints dédiés (health, version, metrics).",
-      "Supervision et observabilité intégrées avec Prometheus et Grafana, et déploiement containerisé avec Docker."
+      "Chaîne de machine learning complète : entraînement d’un modèle RandomForest, évaluation et sérialisation (scikit-learn, pandas).",
+      "Mise en service du modèle derrière une API REST FastAPI, avec des endpoints dédiés à la santé, à la version et aux métriques.",
+      "Observabilité intégrée sous Prometheus et Grafana, et livraison conteneurisée avec Docker.",
     ],
   },
   {
-    title: "Suivi des candidatures – Extension Chrome avec IA",
+    title: "Suivi de candidatures assisté par LLM",
     github: "https://github.com/jordantatue/job-tracker",
-    video: "",
+    tags: ["React", "Vite", "LLM", "OpenRouter", "Chrome Extension"],
     description: [
-      "Conception d’une extension Chrome pour le suivi intelligent et centralisé des candidatures.",
-      "Interface interactive développée en React avec Vite et Bootstrap : tableau dynamique, filtres, statistiques et gestion des statuts.",
-      "Persistance locale des données via chrome.storage.local, garantissant confidentialité et autonomie.",
-      "Intégration d’un chatbot IA connecté à l’API OpenRouter (Mistral, Llama) pour analyser les offres et optimiser les candidatures."
+      "Extension navigateur centralisant le suivi des candidatures : tableau dynamique, filtres, statistiques et gestion des statuts.",
+      "Assistant conversationnel branché sur l’API OpenRouter (Mistral, Llama) pour analyser les offres et affiner les candidatures.",
+      "Données conservées localement via chrome.storage.local : aucun envoi vers un serveur tiers.",
     ],
   },
+];
+
+/** Projets de formation, presentes de maniere compacte. */
+export const otherProjects = [
   {
     title: "Snap-Faces",
     github: "https://github.com/jordantatue/snapface",
-    video: "https://youtube.com/embed/wMjSthcGC6M",
-    description: [
-      "Application web de partage de photos avec système de likes.",
-      "Architecture modulaire et synchronisation front-end / back-end."
-    ],
+    summary: "Partage de photos avec système de likes, architecture front-end / back-end modulaire.",
   },
   {
-    title: "HappySport – Conception de solution informatique",
+    title: "HappySport",
     github: "https://github.com/jordantatue/Analyse_Projet_HappySport",
-    video: "https://www.youtube.com/embed/exJkZ0fLiWY",
-    description: [
-      "Analyse des besoins et conception d’un prototype fonctionnel.",
-      "Définition de l’architecture logicielle et des bonnes pratiques."
-    ],
+    summary: "Analyse de besoins, architecture logicielle et prototype fonctionnel.",
   },
   {
-    title: "Site de commande",
+    title: "Site de commande sécurisé",
     github: "https://github.com/jordantatue/Burger_Code_Securise",
-    video: "https://www.youtube.com/embed/pw1yJ2cXEiA",
-    description: [
-      "Site web dynamique et responsive.",
-      "Gestion des utilisateurs et commandes avec persistance des données."
-    ],
+    summary: "Site dynamique et responsive, gestion des utilisateurs et des commandes.",
   },
   {
-    title: "Application de gestion des contacts",
+    title: "Gestion de contacts",
     github: "https://github.com/jordantatue/Applications-de-contacts-",
-    video: "https://www.youtube.com/embed/0Q9OOUkNmBo",
-    description: [
-      "Application desktop permettant la gestion complète d’un annuaire.",
-      "Fonctionnalités de recherche avancée et persistance des données."
-    ],
+    summary: "Application desktop d’annuaire avec recherche avancée et persistance.",
   },
 ];
-
-export const awards = [];

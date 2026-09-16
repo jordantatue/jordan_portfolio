@@ -1,101 +1,103 @@
-import React from "react";
-import { projects } from "@/lib/data";
-import {
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Github } from "lucide-react";
+import { featuredProjects, otherProjects, personalInfo } from "@/lib/data";
+import { Github, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Section from "./ui/section";
 import { GlassCard } from "./ui/glass-card";
 import MotionWrapper from "./MotionWrapper";
-import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-12 relative" style={{ paddingTop: "100px" }}>
-      <div className="container max-w-4xl mx-auto px-6 md:px-4">
-        <MotionWrapper>
-          <h2 className="text-2xl font-bold mb-8 text-center md:text-left">
-            🚀 Projets
-          </h2>
-        </MotionWrapper>
+    <Section
+      id="projects"
+      title="Projets"
+      lead="Deux réalisations qui résument ma façon de travailler : un modèle mis en service et supervisé, une interface adossée à des LLM."
+    >
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {featuredProjects.map((project, index) => (
+          <MotionWrapper key={project.title} delay={index * 0.12}>
+            <GlassCard className="group h-full flex flex-col p-6 hover:border-brand-border">
+              <h3 className="text-lg font-semibold tracking-tight group-hover:text-brand transition-colors">
+                {project.title}
+              </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <MotionWrapper key={project.title} delay={index * 0.2}>
-              <GlassCard className="group overflow-hidden dark:border-purple-500/10 h-full flex flex-col">
-                <CardHeader className="bg-gradient-to-r from-purple-500/5 to-pink-500/5">
-                  <CardTitle className="text-center md:text-left group-hover:text-purple-500 transition-colors duration-300">
-                    {project.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  {project.video && (
-                    <div className="mb-4">
-                      <iframe
-                        width="400"
-                        height="400"
-                        src={project.video}
-                        title={project.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full rounded-lg shadow-md"
-                        style={{ maxHeight: 240 }}
-                      />
-                    </div>
-                  )}
-                  <ul className="list-disc ml-4 space-y-1 text-sm group-hover:space-y-2 transition-all duration-300">
-                    {project.description.map((desc, i) => (
-                      <motion.li
-                        key={i}
-                        className="text-muted-foreground"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        {desc}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter className="flex justify-center md:justify-start items-center border-t border-border/30 bg-gradient-to-r from-purple-500/5 to-pink-500/5">
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-sm text-muted-foreground hover:text-purple-500 transition-colors group/link pt-8"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+              <ul className="mt-3 flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="rounded border border-brand-border bg-brand-muted px-2 py-0.5 text-xs font-medium"
                   >
-                    <Github className="h-4 w-4 mr-2 group-hover/link:rotate-12 transition-transform duration-300" />
-                    View on GitHub 🔗
-                  </motion.a>
-                </CardFooter>
-              </GlassCard>
-            </MotionWrapper>
-          ))}
-          <div className="col-span-full mt-8 text-center text-muted-foreground text-sm">
-            <span>
-              D'autres projets, notamment en <strong>machine learning</strong>, <strong>IA</strong> et <strong>Django/Python</strong>, sont disponibles sur mon espace GitHub.<br />
-              <motion.a
-              href="https://github.com/jordantatue?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-purple-500 hover:no-underline mt-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+
+              <ul className="mt-4 space-y-2 flex-grow">
+                {project.description.map((line) => (
+                  <li
+                    key={line.slice(0, 32)}
+                    className="relative pl-4 text-sm text-muted-foreground leading-relaxed before:absolute before:left-0 before:top-2.5 before:h-1 before:w-1 before:rounded-full before:bg-brand"
+                  >
+                    {line}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center self-start text-sm font-medium hover:text-brand transition-colors"
               >
-              <Github className="h-4 w-4 mr-2 group-hover/link:rotate-12 transition-transform duration-300" />
-              Voir tous mes dépôts GitHub 🔗
-              </motion.a>
-            </span>
-          </div>
-        </div>
+                <Github className="h-4 w-4 mr-2" aria-hidden="true" />
+                Voir le code
+              </a>
+            </GlassCard>
+          </MotionWrapper>
+        ))}
       </div>
-    </section>
+
+      <MotionWrapper delay={0.2}>
+        <div className="mt-12">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+            Projets de formation
+          </h3>
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+            {otherProjects.map((project) => (
+              <li key={project.title}>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-l-2 border-border pl-4 hover:border-brand transition-colors"
+                >
+                  <span className="flex items-center text-sm font-medium group-hover:text-brand transition-colors">
+                    {project.title}
+                    <ArrowUpRight
+                      className="ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="mt-0.5 block text-sm text-muted-foreground">
+                    {project.summary}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <motion.a
+            href={`${personalInfo.github}?tab=repositories`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center text-sm font-medium hover:text-brand transition-colors"
+            whileHover={{ x: 2 }}
+          >
+            <Github className="h-4 w-4 mr-2" aria-hidden="true" />
+            Tous mes dépôts GitHub
+            <ArrowUpRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" />
+          </motion.a>
+        </div>
+      </MotionWrapper>
+    </Section>
   );
 }

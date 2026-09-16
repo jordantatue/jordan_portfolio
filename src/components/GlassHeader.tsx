@@ -2,110 +2,99 @@ import ThemeToggle from "./ui/theme-toggle";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { personalInfo } from "@/lib/data";
+
+/** Source unique des liens de navigation, partagee bureau et mobile. */
+const navItems = [
+  { id: "experience", label: "Expérience" },
+  { id: "skills", label: "Compétences" },
+  { id: "projects", label: "Projets" },
+  { id: "education", label: "Formation" },
+];
 
 export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen((open) => !open);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-  const logoSrc = `${normalizedBase}logos/site_logo.png`;
-  const navLabels: Record<string, string> = {
-    experience: "Expérience",
-    skills: "Compétences",
-    projects: "Projets",
-    awards: "Récompenses",
-    education: "Formation",
-  };
 
   return (
-    <header className="fixed top-0 z-50 w-full backdrop-blur-md backdrop-filter bg-background/70 dark:bg-background/40 border-b border-border/40 supports-[backdrop-filter]:bg-background/60">
-      <div className="container max-w-4xl mx-auto p-4 flex justify-between items-center">
-        <motion.a
-          className="flex items-center"
+    <header className="fixed top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
+      <div className="container max-w-4xl mx-auto px-6 md:px-4 h-16 flex items-center justify-between">
+        <a
           href={normalizedBase}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-2.5 font-semibold tracking-tight hover:text-brand transition-colors"
         >
-          <div className="h-14 w-14 md:h-16 md:w-16 rounded-full bg-muted/30 p-2 flex items-center justify-center overflow-hidden">
-            <img
-              src={logoSrc}
-              alt="Logo du site"
-              className="h-full w-full object-contain"
-            />
-          </div>
-        </motion.a>
+          <img
+            src={`${normalizedBase}logos/site_logo.png`}
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-md object-contain"
+            aria-hidden="true"
+          />
+          {personalInfo.name}
+        </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium fixed-top">
-          {["experience", "skills", "projects", "education"].map(
-            (item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item}`}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-              >
-                {item === "experience" && "💼 "}
-                {item === "skills" && "🛠️ "}
-                {item === "projects" && "🚀 "}
-                {item === "awards" && "🏆 "}
-                {item === "education" && "🎓 "}
-                {navLabels[item] ?? item}
-              </motion.a>
-            )
-          )}
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          {navItems.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="text-muted-foreground hover:text-brand transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="rounded-md border border-brand-border bg-brand-muted px-3 py-1.5 font-medium hover:bg-brand hover:text-background transition-colors"
+          >
+            Me contacter
+          </a>
         </nav>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-1">
           <ThemeToggle />
-
-          {/* Mobile Menu Button */}
-          <motion.button
+          <button
             className="md:hidden p-2 text-foreground"
             onClick={toggleMenu}
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.95 }}
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden py-4 px-4 border-t border-border/10 backdrop-blur-md backdrop-filter bg-background/80 dark:bg-background/40"
+            className="md:hidden overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-md"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
           >
-            <nav className="flex flex-col space-y-4 text-sm font-medium">
-              {["experience", "skills", "projects", "awards", "education"].map(
-                (item, index) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item}`}
-                    className="transition-colors hover:text-foreground/80 text-foreground/60 py-2"
-                    onClick={toggleMenu}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.1 }}
-                  >
-                    {item === "experience" && "💼 "}
-                    {item === "skills" && "🛠️ "}
-                    {item === "projects" && "🚀 "}
-                    {item === "awards" && "🏆 "}
-                    {item === "education" && "🎓 "}
-                    {navLabels[item] ?? item}
-                  </motion.a>
-                )
-              )}
+            <nav className="flex flex-col px-6 py-2 text-sm">
+              {navItems.map(({ id, label }) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  className="py-3 text-muted-foreground hover:text-brand transition-colors"
+                  onClick={toggleMenu}
+                >
+                  {label}
+                </a>
+              ))}
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="py-3 font-medium text-brand"
+                onClick={toggleMenu}
+              >
+                Me contacter
+              </a>
             </nav>
           </motion.div>
         )}

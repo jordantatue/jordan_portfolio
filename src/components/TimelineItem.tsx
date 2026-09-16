@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 
 interface TimelineItemProps {
   title: string;
@@ -9,10 +8,14 @@ interface TimelineItemProps {
   logoSrc?: string;
   logoAlt?: string;
   isLast?: boolean;
-  index?: number;
   children?: React.ReactNode;
 }
 
+/**
+ * Entree de frise chronologique. Volontairement statique : la revelation au
+ * defilement est portee par la section parente, pour n'avoir qu'un seul
+ * observateur par entree plutot qu'un par ligne.
+ */
 export default function TimelineItem({
   title,
   subtitle,
@@ -20,57 +23,23 @@ export default function TimelineItem({
   logoSrc,
   logoAlt,
   isLast = false,
-  index = 0,
   children,
 }: TimelineItemProps) {
   const baseUrl = import.meta.env.BASE_URL ?? "/";
   const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
   const resolvedLogoSrc = logoSrc ? `${normalizedBase}${logoSrc}` : "";
-  const hasLogo = Boolean(resolvedLogoSrc);
 
   return (
-    <motion.div
-      className="relative flex gap-6"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
-      viewport={{ once: true, margin: "-50px" }}
-    >
+    <div className="relative flex gap-5">
       <div className="flex flex-col items-center">
-        <motion.div
-          className="flex h-[18px] w-[18px] rounded-full border border-purple-500/50 bg-background dark:bg-muted z-10"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 15,
-            delay: index * 0.2 + 0.2,
-          }}
-          viewport={{ once: true, margin: "-50px" }}
-        />
-        {!isLast && (
-          <motion.div
-            className="w-px grow bg-gradient-to-b from-purple-500/50 to-pink-500/30 dark:from-purple-500/30 dark:to-pink-500/10"
-            initial={{ height: 0 }}
-            whileInView={{ height: "100%" }}
-            transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
-            viewport={{ once: true, margin: "-50px" }}
-          />
-        )}
+        <div className="h-2.5 w-2.5 mt-2 shrink-0 rounded-full bg-brand ring-4 ring-background" />
+        {!isLast && <div className="w-px grow bg-border" />}
       </div>
-      <div className={cn("pb-8", isLast ? "pb-0" : "")}>
-        <motion.div
-          className={cn(
-            hasLogo ? "flex items-start gap-4" : "flex flex-col gap-0.5"
-          )}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {hasLogo && (
-            <div className="h-16 w-16 rounded-md border border-border/40 bg-muted/40 p-2 flex items-center justify-center overflow-hidden">
+
+      <div className={cn("min-w-0", isLast ? "pb-0" : "pb-10")}>
+        <div className={resolvedLogoSrc ? "flex items-start gap-4" : undefined}>
+          {resolvedLogoSrc && (
+            <div className="h-12 w-12 shrink-0 rounded-md border border-border/60 bg-white p-1.5 flex items-center justify-center overflow-hidden">
               <img
                 src={resolvedLogoSrc}
                 alt={logoAlt ?? ""}
@@ -80,20 +49,13 @@ export default function TimelineItem({
             </div>
           )}
           <div className="flex flex-col gap-0.5">
-            <h3 className="font-medium">{title}</h3>
+            <h3 className="font-semibold tracking-tight">{title}</h3>
             <p className="text-sm text-muted-foreground">{subtitle}</p>
-            <p className="text-xs text-muted-foreground/70 mb-2">{date}</p>
+            <p className="text-xs text-muted-foreground/70">{date}</p>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {children}
-        </motion.div>
+        </div>
+        {children}
       </div>
-    </motion.div>
+    </div>
   );
 }
