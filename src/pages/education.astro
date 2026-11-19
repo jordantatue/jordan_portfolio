@@ -1,8 +1,4 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import EducationSection from "@/components/EducationSection";
+const target = `${import.meta.env.BASE_URL}#formation`;
 ---
-
-<Layout slug="education">
-  <EducationSection client:only="react" />
-</Layout>
+<html lang="fr"><head><meta charset="UTF-8" /><meta http-equiv="refresh" content={`0;url=${target}`} /><link rel="canonical" href={target} /><title>Formation — Jordan Tatue</title></head><body><p><a href={target}>Voir la formation de Jordan Tatue</a></p></body></html>

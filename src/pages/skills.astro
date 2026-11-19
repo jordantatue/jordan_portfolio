@@ -1,8 +1,4 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import SkillsSection from "@/components/SkillsSection";
+const target = `${import.meta.env.BASE_URL}#expertise`;
 ---
-
-<Layout slug="skills">
-  <SkillsSection client:only="react" />
-</Layout>
+<html lang="fr"><head><meta charset="UTF-8" /><meta http-equiv="refresh" content={`0;url=${target}`} /><link rel="canonical" href={target} /><title>Expertise — Jordan Tatue</title></head><body><p><a href={target}>Voir les compétences de Jordan Tatue</a></p></body></html>
