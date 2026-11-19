@@ -6,13 +6,17 @@ Site : [jordantatue.github.io/jordan_portfolio](https://jordantatue.github.io/jo
 
 ## Conception
 
-Le site reprend l'idée d'un espace de travail technique : navigation latérale, cartes de projets et parcours lisible. Il est généré par Astro en HTML et CSS statiques pour GitHub Pages. Aucune API, base de données ou clé secrète n'est requise pour le consulter.
+Le site adopte une présentation éditoriale claire inspirée d'AIVOR : rail de navigation, introduction centrée et champ de questions. Il est généré par Astro en HTML et CSS statiques pour GitHub Pages. Aucune API, base de données ou clé secrète n'est requise pour le consulter.
 
-Le contenu éditorial est dans `src/lib/portfolio.ts`. La page principale est `src/pages/index.astro` et son style dans `src/styles/workspace.css`. Les anciennes URL de sections redirigent vers les ancres de la page principale.
+Le contenu éditorial est dans `src/lib/portfolio.ts`. La page principale est `src/pages/index.astro` et son style dans `src/styles/workspace.css`. Les anciennes URL de sections redirigent vers les ancres de la page principale. Les compétences sont toutes visibles et les expériences détaillent contexte, projet, réalisations, impact et technologies.
+
+Le champ de questions lit `public/knowledge/portfolio.md` dans le navigateur et choisit une réponse par mots-clés. C'est une simulation locale, sans modèle d'IA. Une future IA réelle demanderait un service côté serveur pour protéger la clé API, même si le site reste statique.
+
+Les trois CV publics (Full Stack, DevOps / MLOps / Cloud et IA / Data Science) sont dans `public/cv/`. Une capture de la boutique BeautyShop est dans `public/media/`, et les quatre démonstrations YouTube historiques sont liées depuis les projets d'archives.
 
 ## Sources du contenu
 
-- CV de Jordan Tatue datés du 14 novembre 2026, variantes Full Stack et IA / Data.
+- CV de Jordan Tatue datés des 10 et 14 novembre 2026, variantes Full Stack, DevOps / MLOps / Cloud et IA / Data Science.
 - [Profil LinkedIn de Jordan Tatue](https://www.linkedin.com/in/tatuejordan/).
 - Dépôts GitHub liés depuis les cartes projets.
 

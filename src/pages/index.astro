@@ -1,114 +1,107 @@
 ---
 import WorkspaceLayout from "@/layouts/WorkspaceLayout.astro";
-import { profile, projects, moreProjects, experience, capabilities, education } from "@/lib/portfolio";
+import { profile, resumes, quickPrompts, projects, moreProjects, experience, skillGroups, education } from "@/lib/portfolio";
 
 const base = import.meta.env.BASE_URL;
+const skillCount = skillGroups.reduce((count, group) => count + group.items.length, 0);
 const nav = [
-  { href: "#accueil", icon: "⌂", label: "Vue d'ensemble" },
+  { href: "#accueil", icon: "⌂", label: "Accueil" },
   { href: "#projets", icon: "▦", label: "Projets" },
-  { href: "#expertise", icon: "◇", label: "Expertise" },
-  { href: "#parcours", icon: "↗", label: "Parcours" },
-  { href: "#formation", icon: "✳", label: "Formation" },
+  { href: "#competences", icon: "◇", label: "Compétences" },
+  { href: "#experiences", icon: "▤", label: "Expériences" },
+  { href: "#formation", icon: "✧", label: "Formation" },
+  { href: "#cv", icon: "↓", label: "Télécharger un CV" },
   { href: "#contact", icon: "✉", label: "Contact" },
 ];
 ---
 
 <WorkspaceLayout>
-  <div class="workspace" id="accueil">
-    <aside class="sidebar" aria-label="Navigation principale">
-      <a class="brand" href="#accueil" aria-label="Jordan Tatue, retour à l'accueil">
-        <span class="brand-mark">JT<span class="brand-dot">.</span></span>
-        <span class="brand-copy"><strong>Jordan Tatue</strong><small>PORTFOLIO / 2026</small></span>
-      </a>
-
-      <div class="sidebar-caption">ESPACE DE TRAVAIL</div>
-      <nav class="side-nav" aria-label="Sections du portfolio">
-        {nav.map((item, index) => (
-          <a href={item.href} class:list={["nav-link", { "nav-link-active": index === 0 }]}>
-            <span class="nav-icon" aria-hidden="true">{item.icon}</span>
-            <span>{item.label}</span>
-            {index === 0 && <span class="nav-live" aria-hidden="true"></span>}
-          </a>
-        ))}
+  <div class="site-shell" id="accueil">
+    <aside class="rail" aria-label="Navigation principale">
+      <a class="rail-logo" href="#accueil" aria-label="Accueil de Jordan Tatue">JT</a>
+      <nav class="rail-nav" aria-label="Sections du portfolio">
+        {nav.map((item) => <a href={item.href} aria-label={item.label} title={item.label}><span aria-hidden="true">{item.icon}</span><span class="rail-label">{item.label}</span></a>)}
       </nav>
-
-      <div class="sidebar-bottom">
-        <div class="availability"><span class="status-dot"></span> Ouvert aux échanges</div>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-      </div>
+      <div class="rail-bottom"><a href="#cv" aria-label="Télécharger un CV" title="Télécharger un CV">↓</a><img src={`${base}profile.webp`} width="36" height="36" alt="Jordan Tatue" /></div>
     </aside>
 
-    <main class="main-content">
-      <header class="topbar">
-        <div class="breadcrumbs"><span>PORTFOLIO</span><span class="crumb-sep">/</span><strong>VUE D'ENSEMBLE</strong></div>
-        <div class="topbar-right"><span class="topbar-location">Paris, France</span><a class="topbar-contact" href={`mailto:${profile.email}`}>Me contacter <span aria-hidden="true">↗</span></a></div>
-      </header>
+    <main class="page">
+      <header class="topline"><span class="topline-label">Portfolio · Jordan Tatue</span><div class="topline-pill"><span>{profile.role}</span><span class="topline-separator">·</span><a href="#contact">Contactez-moi ↗</a></div><a class="topline-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></header>
 
-      <div class="content-wrap">
-        <section class="hero panel" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <div class="eyebrow"><span class="eyebrow-line"></span> DÉVELOPPEMENT · DEVOPS · IA</div>
-            <h1 id="hero-title">Je construis des systèmes <em>utiles</em>, du code à la production<span class="period">.</span></h1>
-            <p class="hero-lead">{profile.intro}</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#projets">Explorer mes projets <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Voir mon LinkedIn <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="hero-meta"><span class="status-dot"></span><span>{profile.location}</span><span class="meta-divider">/</span><span>Ingénieur diplômé 3iL</span></div>
-          </div>
-          <div class="hero-visual" aria-label="Portrait et domaines de Jordan Tatue">
-            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-            <div class="portrait-frame"><img src={`${base}profile.webp`} width="480" height="525" alt="Portrait de Jordan Tatue" /></div>
-            <div class="floating-tag tag-top"><span class="tag-symbol">{`{ }`}</span><span>FULL STACK</span></div>
-            <div class="floating-tag tag-bottom"><span class="tag-symbol">◎</span><span>IA + DEVOPS</span></div>
-            <div class="visual-coordinate">01 / HUMAN + SYSTEMS</div>
-          </div>
-        </section>
-
-        <div class="overview-grid" aria-label="Points clés du profil">
-          <div class="overview-card"><span class="overview-icon">↗</span><span class="overview-label">EXPÉRIENCE</span><strong>Applications métier</strong><small>Banque · assurance · énergie</small></div>
-          <div class="overview-card"><span class="overview-icon">◇</span><span class="overview-label">SPÉCIALITÉS</span><strong>Build + Run + Data</strong><small>Développement · livraison · IA</small></div>
-          <div class="overview-card"><span class="overview-icon">✳</span><span class="overview-label">FORMATION</span><strong>Ingénieur + Master 2</strong><small>3iL · Hochschule Hannover</small></div>
+      <section class="landing" aria-labelledby="landing-title">
+        <div class="landing-title"><img src={`${base}profile.webp`} width="56" height="56" alt="Portrait de Jordan Tatue" /><div><span class="small-overline">BONJOUR, JE SUIS JORDAN TATUE</span><h1 id="landing-title">Mon portfolio<span class="title-period">.</span></h1></div></div>
+        <p class="landing-intro">{profile.intro}</p>
+        <div class="composer-wrap">
+          <form id="portfolio-prompt" class="composer" data-knowledge-url={`${base}knowledge/portfolio.md`}>
+            <label for="portfolio-question">Posez une question sur mon parcours</label>
+            <textarea id="portfolio-question" name="question" rows="2" maxlength="240" placeholder="Quelles compétences ai-je acquises ? Quels projets IA ai-je réalisés ?"></textarea>
+            <div class="composer-bottom"><span><span class="local-dot"></span> Exploration guidée · réponses locales</span><button type="submit" aria-label="Afficher une réponse">↗</button></div>
+          </form>
+          <div id="prompt-answer" class="prompt-answer" hidden aria-live="polite"><div class="answer-head"><span class="local-dot"></span> Réponse du portfolio <span class="answer-mode">SIMULATION LOCALE</span></div><p id="prompt-answer-text"></p><a id="prompt-answer-link" href="#projets">Explorer la section ↗</a></div>
         </div>
+        <div class="suggestions" aria-label="Questions suggérées">{quickPrompts.map((prompt) => <button type="button" data-question={prompt.question}>✦ {prompt.label}</button>)}<a href="#cv">↓ Télécharger un CV</a></div>
+        <p class="landing-note">Le champ explore une base de réponses publiques. Il ne contacte aucun service d'IA.</p>
+      </section>
 
-        <section class="section-block" id="projets" aria-labelledby="projects-title">
-          <div class="section-heading"><div><div class="section-kicker">01 / TRAVAUX SÉLECTIONNÉS</div><h2 id="projects-title">Projets<span class="period">.</span></h2><p>Des cas concrets pour comprendre ce que je construis et comment je le livre.</p></div><a class="text-link" href={`${profile.github}?tab=repositories`} target="_blank" rel="noopener noreferrer">Tous les dépôts <span aria-hidden="true">↗</span></a></div>
-          <div class="project-grid">
-            {projects.map((project) => (
-              <article class:list={["project-card", `accent-${project.accent}`]}>
-                <div class="project-top"><span class="project-number">/ {project.number}</span><span class="project-category">{project.category}</span></div>
-                <div class="project-glyph" aria-hidden="true">{project.number === "01" ? "◎" : project.number === "02" ? "▧" : "⌘"}</div>
-                <h3>{project.title}</h3><p class="project-summary">{project.summary}</p>
-                <div class="project-detail"><span>OBJECTIF</span><p>{project.challenge}</p></div>
-                <div class="project-detail"><span>RÉALISATION</span><p>{project.solution}</p></div>
-                <ul class="tags" aria-label="Technologies">{project.stack.map((tag) => <li>{tag}</li>)}</ul>
-                {project.link ? <a class="project-link" href={project.link} target="_blank" rel="noopener noreferrer">Voir le code <span aria-hidden="true">↗</span></a> : <span class="project-private">Code privé</span>}
-              </article>
-            ))}
-          </div>
-          <div class="more-projects"><div class="more-projects-head"><span>AUTRES DÉPÔTS</span><span>GITHUB / ARCHIVE</span></div><div class="more-projects-list">{moreProjects.map((project) => <a href={project.link} target="_blank" rel="noopener noreferrer"><span><strong>{project.title}</strong><small>{project.category} — {project.text}</small></span><span class="more-arrow" aria-hidden="true">↗</span></a>)}</div></div>
-        </section>
+      <div class="section-index"><a href="#projets">01 / Projets <span>↘</span></a><a href="#competences">02 / Compétences <span>↘</span></a><a href="#experiences">03 / Expériences <span>↘</span></a></div>
 
-        <section class="section-block" id="expertise" aria-labelledby="expertise-title">
-          <div class="section-heading"><div><div class="section-kicker">02 / COMPÉTENCES</div><h2 id="expertise-title">Trois domaines, <em>un même cycle</em><span class="period">.</span></h2><p>Concevoir, livrer et faire évoluer des logiciels qui répondent à un besoin réel.</p></div></div>
-          <div class="capabilities-grid">{capabilities.map((capability) => <article class="capability-card"><span class="capability-icon" aria-hidden="true">{capability.icon}</span><h3>{capability.title}</h3><p>{capability.text}</p><ul class="tags" aria-label="Outils et technologies">{capability.tools.map((tool) => <li>{tool}</li>)}</ul></article>)}</div>
-        </section>
+      <section class="editorial-section" id="projets" aria-labelledby="projects-title"><div class="section-intro"><span class="eyebrow">01 · PROJETS SÉLECTIONNÉS</span><h2 id="projects-title">Ce que j'ai construit.</h2><p>Des réalisations qui relient un problème concret, une solution technique et une livraison.</p></div>
+        <div class="project-list">{projects.map((project) => <article class="project-item"><div class="project-meta"><span>{project.number} / {project.category}</span><span>{project.status}</span></div><div class="project-body"><h3>{project.title}</h3><p class="project-summary">{project.summary}</p>{project.screenshot && <a class="project-screenshot" href={project.live || `${base}${project.screenshot}`} target="_blank" rel="noopener noreferrer" aria-label={`Voir la boutique ${project.title}`}><img src={`${base}${project.screenshot}`} alt="Capture d'écran de la boutique BeautyShop : accueil et catalogue" width="1440" height="1000" loading="lazy" /><span>Voir la boutique en ligne ↗</span></a>}<div class="project-columns"><div><h4>Contexte</h4><p>{project.context}</p></div><div><h4>Réalisation</h4><p>{project.delivered}</p></div><div><h4>Impact</h4><p>{project.impact}</p></div></div><ul class="tech-list" aria-label="Technologies du projet">{project.stack.map((item) => <li>{item}</li>)}</ul>{project.link ? <a class="underlined-link" href={project.link} target="_blank" rel="noopener noreferrer">Explorer le dépôt GitHub ↗</a> : <span class="private-note">Code privé · présentation publique du projet</span>}</div></article>)}</div>
+        <div class="other-projects"><div><span class="eyebrow">DANS LES ARCHIVES</span><h3>Autres projets GitHub</h3><p>Les démonstrations vidéo de l'ancien portfolio sont à nouveau accessibles.</p></div><div>{moreProjects.map((project) => <div class="archive-project"><span><strong>{project.title}</strong><small>{project.detail}</small></span><div class="archive-links"><a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Voir le code de ${project.title} sur GitHub`}>Code ↗</a>{project.video && <a class="video-link" href={project.video} target="_blank" rel="noopener noreferrer" aria-label={`Voir la vidéo de ${project.title} sur YouTube`}>▶ Vidéo YouTube ↗</a>}</div></div>)}</div></div>
+      </section>
 
-        <section class="section-block" id="parcours" aria-labelledby="experience-title">
-          <div class="section-heading"><div><div class="section-kicker">03 / PARCOURS</div><h2 id="experience-title">Expériences<span class="period">.</span></h2><p>Des équipes produit et exploitation, jusqu'aux projets de données.</p></div><a class="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Parcours complet <span aria-hidden="true">↗</span></a></div>
-          <div class="timeline">{experience.map((item) => <article class="timeline-item"><div class="timeline-date">{item.period}</div><div class="timeline-marker" aria-hidden="true"></div><div class="timeline-body"><div class="timeline-top"><span>{item.company}</span><span>{item.place}</span></div><h3>{item.role}</h3><p>{item.text}</p><ul class="tags" aria-label="Technologies">{item.tags.map((tag) => <li>{tag}</li>)}</ul></div></article>)}</div>
-        </section>
+      <span id="expertise" class="anchor-alias" aria-hidden="true"></span>
+      <section class="editorial-section" id="competences" aria-labelledby="skills-title"><div class="section-intro"><span class="eyebrow">02 · COMPÉTENCES</span><h2 id="skills-title">Toute la boîte à outils.</h2><p>{skillCount} compétences et technologies réparties par domaine. La liste complète reste visible pour permettre une lecture rapide ou ciblée.</p></div><div class="skill-grid">{skillGroups.map((group, index) => <article class="skill-group"><div class="skill-head"><span>{String(index + 1).padStart(2, "0")}</span><h3>{group.name}</h3><small>{group.items.length} éléments</small></div><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div></section>
 
-        <section class="section-block" id="formation" aria-labelledby="education-title">
-          <div class="section-heading"><div><div class="section-kicker">04 / FORMATION</div><h2 id="education-title">Fondations<span class="period">.</span></h2></div></div>
-          <div class="education-grid">{education.map((item) => <article class="education-card"><span class="education-date">{item.date}</span><h3>{item.title}</h3><strong>{item.place}</strong><p>{item.detail}</p></article>)}</div>
-        </section>
+      <span id="parcours" class="anchor-alias" aria-hidden="true"></span>
+      <section class="editorial-section" id="experiences" aria-labelledby="experience-title"><div class="section-intro"><span class="eyebrow">03 · PARCOURS</span><h2 id="experience-title">Contexte, actions, impact.</h2><p>Chaque mission est présentée avec le projet, les réalisations et la stack réellement utilisée. Les impacts restent qualitatifs lorsqu'aucune mesure n'est publiée.</p></div><div class="experience-list">{experience.map((item) => <article class="experience-item"><div class="experience-date"><span>{item.period}</span><small>{item.place}</small></div><div class="experience-main"><div class="experience-heading"><div><span class="company-name">{item.company}</span><h3>{item.role}</h3></div><span class="experience-mark" aria-hidden="true">↗</span></div><div class="experience-grid"><div><h4>Contexte</h4><p>{item.context}</p></div><div><h4>Projet</h4><p>{item.project}</p></div><div class="experience-delivered"><h4>Réalisations</h4><ul>{item.delivered.map((line) => <li>{line}</li>)}</ul></div><div><h4>Impact</h4><p>{item.impact}</p></div></div><div class="stack-line"><strong>STACK & TECHNOLOGIES</strong><ul class="tech-list">{item.stack.map((tag) => <li>{tag}</li>)}</ul></div></div></article>)}</div></section>
 
-        <section class="contact-panel" id="contact" aria-labelledby="contact-title"><div><div class="section-kicker">05 / CONTACT</div><h2 id="contact-title">Construisons la suite<span class="period">.</span></h2><p>Un projet, un poste ou simplement une conversation autour du développement, du DevOps ou de l'IA ?</p></div><div class="contact-actions"><a class="button button-primary" href={`mailto:${profile.email}`}>Écrire un message <span aria-hidden="true">↗</span></a><a class="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a></div></section>
+      <section class="editorial-section" id="formation" aria-labelledby="education-title"><div class="section-intro"><span class="eyebrow">04 · FORMATION</span><h2 id="education-title">Les fondations.</h2></div><div class="education-list">{education.map((item) => <article><span>{item.date}</span><div><h3>{item.title}</h3><strong>{item.place}</strong><p>{item.detail}</p></div></article>)}</div></section>
 
-        <footer class="footer"><span>© 2026 Jordan Tatue</span><span>Développé avec Astro · Hébergé sur GitHub Pages</span><a href="#accueil">Retour en haut ↑</a></footer>
-      </div>
+      <section class="editorial-section resume-section" id="cv" aria-labelledby="cv-title"><div class="section-intro"><span class="eyebrow">05 · CV</span><h2 id="cv-title">Trois profils, trois CV.</h2><p>Choisissez la version adaptée à votre recherche. Chaque document est téléchargeable au format PDF.</p></div><div class="resume-grid">{resumes.map((resume) => <a class="resume-card" href={`${base}${resume.file}`} download><span class="resume-icon">▤</span><div><h3>{resume.label}</h3><p>{resume.description}</p></div><span class="resume-download">Télécharger ↓</span></a>)}</div></section>
+
+      <section class="editorial-section contact-section" id="contact" aria-labelledby="contact-title"><span class="eyebrow">06 · CONTACT</span><h2 id="contact-title">On en parle ?</h2><p>Un poste, un projet ou une question technique : je serai ravi d'échanger.</p><div class="contact-links"><a href={`mailto:${profile.email}`}>Écrire à Jordan ↗</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></section>
+      <footer class="footer"><span>© 2026 Jordan Tatue</span><span>Astro · GitHub Pages · exploration locale</span><a href="#accueil">Retour en haut ↑</a></footer>
     </main>
   </div>
 </WorkspaceLayout>
+
+<script is:inline>
+  const form = document.querySelector('#portfolio-prompt');
+  const input = document.querySelector('#portfolio-question');
+  const answer = document.querySelector('#prompt-answer');
+  const answerText = document.querySelector('#prompt-answer-text');
+  const answerLink = document.querySelector('#prompt-answer-link');
+  const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  let entries = [];
+
+  const knowledgeReady = fetch(form.dataset.knowledgeUrl)
+    .then((response) => { if (!response.ok) throw new Error('Knowledge file unavailable'); return response.text(); })
+    .then((markdown) => {
+      entries = markdown.split(/^## /m).slice(1).map((block) => {
+        const field = (name) => block.match(new RegExp('^' + name + ':\\s*(.*)$', 'mi'))?.[1]?.trim() || '';
+        return { keywords: field('Mots-clés').split(',').map((item) => normalize(item.trim())), answer: field('Réponse'), link: field('Lien') };
+      }).filter((entry) => entry.answer);
+    })
+    .catch(() => { entries = []; });
+
+  async function respond(question) {
+    const query = normalize(question.trim());
+    if (!query) return;
+    await knowledgeReady;
+    let best = null;
+    let score = 0;
+    for (const entry of entries) {
+      const next = entry.keywords.reduce((total, keyword) => total + (keyword.length > 2 && query.includes(keyword) ? keyword.length : 0), 0);
+      if (next > score) { best = entry; score = next; }
+    }
+    answerText.textContent = best?.answer || "Cette simulation locale n'a pas encore de réponse précise à cette question. Vous pouvez explorer les projets, les compétences et les expériences ci-dessous, ou contacter Jordan directement.";
+    answerLink.href = best?.link?.startsWith('#') ? best.link : '#projets';
+    answerLink.textContent = best ? 'Explorer la section ↗' : 'Voir les projets ↗';
+    answer.hidden = false;
+    answer.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+  }
+
+  form.addEventListener('submit', (event) => { event.preventDefault(); respond(input.value); });
+  document.querySelectorAll('[data-question]').forEach((button) => button.addEventListener('click', () => { input.value = button.dataset.question; respond(input.value); }));
+</script>
