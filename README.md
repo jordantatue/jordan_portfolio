@@ -1,60 +1,39 @@
 # Portfolio — Jordan Tatue
 
-Portfolio personnel présentant mon parcours de développeur Full-Stack & DevOps : expériences, compétences, projets et formation.
+Portfolio statique consacré au développement Full Stack, au DevOps et à l'IA appliquée.
 
-🔗 **[jordantatue.github.io/jordan_portfolio](https://jordantatue.github.io/jordan_portfolio/)**
+Site : [jordantatue.github.io/jordan_portfolio](https://jordantatue.github.io/jordan_portfolio/)
 
-![Aperçu du site](assets/image_site.png)
+## Conception
 
-## Stack technique
+Le site reprend l'idée d'un espace de travail technique : navigation latérale, cartes de projets et parcours lisible. Il est généré par Astro en HTML et CSS statiques pour GitHub Pages. Aucune API, base de données ou clé secrète n'est requise pour le consulter.
 
-| Domaine | Technologies |
-| --- | --- |
-| Framework | [Astro 5](https://astro.build/) (rendu statique) |
-| UI | [React 19](https://react.dev/), [Tailwind CSS 4](https://tailwindcss.com/) |
-| Animations | [Framer Motion](https://www.framer.com/motion/), AOS |
-| Icônes | [Lucide](https://lucide.dev/) |
-| Déploiement | GitHub Actions → GitHub Pages |
+Le contenu éditorial est dans `src/lib/portfolio.ts`. La page principale est `src/pages/index.astro` et son style dans `src/styles/workspace.css`. Les anciennes URL de sections redirigent vers les ancres de la page principale.
 
-## Architecture
+## Sources du contenu
 
-```
-src/
-├── components/     Sections de la page (Hero, Experience, Skills, Projects…)
-│   └── ui/         Primitives réutilisables (button, card, glass-card…)
-├── layouts/        Layout.astro — structure HTML, métadonnées, thème
-├── lib/
-│   ├── data.ts     ← TOUT le contenu du site (expériences, projets, compétences)
-│   └── utils.ts    Helpers (fusion de classes Tailwind)
-├── pages/          index.astro — assemblage des sections
-└── styles/         global.css — variables de thème clair/sombre
-```
+- CV de Jordan Tatue datés du 14 novembre 2026, variantes Full Stack et IA / Data.
+- [Profil LinkedIn de Jordan Tatue](https://www.linkedin.com/in/tatuejordan/).
+- Dépôts GitHub liés depuis les cartes projets.
 
-**Pour mettre à jour le contenu, un seul fichier : `src/lib/data.ts`.** Les composants consomment ces données, aucune modification de code n'est nécessaire.
+Les projets privés sont décrits sans lien vers leur code. Les expériences sont résumées à partir du CV ; aucun résultat chiffré n'a été ajouté sans source.
 
-## Démarrage
+## Développement local
 
-Prérequis : Node.js 18+.
+Prérequis : Node.js 24 ou version compatible avec Astro 7.
 
 ```bash
-npm install
-npm run dev      # serveur local sur http://localhost:4321/jordan_portfolio/
+npm ci
+npm run dev
+npm run build
 ```
 
-| Commande | Effet |
-| --- | --- |
-| `npm run dev` | Serveur de développement avec rechargement à chaud |
-| `npm run build` | Build de production dans `static/` |
-| `npm run preview` | Prévisualisation locale du build |
+Le build est écrit dans `static/`. La configuration Astro définit `base: '/jordan_portfolio/'` pour le déploiement sur GitHub Pages.
 
 ## Déploiement
 
-Chaque push sur `master` déclenche `.github/workflows/deploy.yml`, qui construit le site et le publie sur la branche `gh-pages`.
-
-Le site étant servi depuis un sous-chemin, `base: '/jordan_portfolio/'` est défini dans `astro.config.mjs`. **Toute référence à un fichier de `public/` doit donc être préfixée par `import.meta.env.BASE_URL`**, jamais écrite en dur.
+Un push sur `master` déclenche `.github/workflows/deploy.yml`, construit le site et publie `static/` sur `gh-pages`.
 
 ## Licence
 
-MIT — voir [LICENSE](LICENSE).
-
-Ce portfolio est dérivé du template [my-portfolio](https://github.com/rishikesh2003/my-portfolio) de Rishikesh S, dont l'attribution est conservée conformément à la licence MIT.
+MIT — voir [LICENSE](LICENSE). Ce dépôt dérive initialement de [my-portfolio](https://github.com/rishikesh2003/my-portfolio) de Rishikesh S ; l'attribution historique est conservée.
